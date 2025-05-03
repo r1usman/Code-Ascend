@@ -1,0 +1,224 @@
+import { useState } from "react";
+import Editor from "@monaco-editor/react";
+import {
+  VideoCameraIcon,
+  MicrophoneIcon,
+  ChatBubbleLeftIcon,
+  PlusIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
+
+const participants = [
+  {
+    id: "1",
+    name: "Sarah Chen",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+    status: "active",
+  },
+  {
+    id: "2",
+    name: "John Doe",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=John",
+    status: "active",
+  },
+  {
+    id: "3",
+    name: "Alex Kim",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
+    status: "idle",
+  },
+];
+
+const initialCode = `function solve(nums: number[]): number {
+  // Problem: Find the maximum subarray sum
+  let maxSum = nums[0];
+  let currentSum = nums[0];
+  
+  for (let i = 1; i < nums.length; i++) {
+    currentSum = Math.max(nums[i], currentSum + nums[i]);
+    maxSum = Math.max(maxSum, currentSum);
+  }
+  
+  return maxSum;
+}`;
+
+function App() {
+  const [showChat, setShowChat] = useState(false);
+  const [comments] = useState([
+    {
+      id: "1",
+      user: "Sarah Chen",
+      text: "We should add a check for empty array here",
+      timestamp: "2 min ago",
+      lineNumber: 2,
+    },
+    {
+      id: "2",
+      user: "John Doe",
+      text: "Good catch! Also consider handling negative numbers",
+      timestamp: "1 min ago",
+      lineNumber: 2,
+    },
+  ]);
+
+  return (
+    <div className="h-screen flex flex-col bg-gray-50">
+      {/* Header */}
+      <header className="bg-white border-b border-gray-200 px-4 py-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <h1 className="text-xl font-semibold text-gray-900">
+              Collaborative Coding Session
+            </h1>
+            <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+              Live: Problem #234 - Maximum Subarray
+            </span>
+          </div>
+          <div className="flex items-center space-x-4">
+            <button className="p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
+              <VideoCameraIcon className="w-6 h-6" />
+            </button>
+            <button className="p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
+              <MicrophoneIcon className="w-6 h-6" />
+            </button>
+            <button
+              className="p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100"
+              onClick={() => setShowChat(!showChat)}
+            >
+              <ChatBubbleLeftIcon className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div className="flex-1 flex">
+        {/* Main Editor */}
+        <div className="flex-1 flex flex-col">
+          <div className="flex-1 bg-white">
+            <Editor
+              height="100%"
+              defaultLanguage="typescript"
+              defaultValue={initialCode}
+              theme="vs-light"
+              options={{
+                minimap: { enabled: false },
+                fontSize: 14,
+                lineNumbers: "on",
+                renderLineHighlight: "all",
+                scrollBeyondLastLine: false,
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Participants Sidebar */}
+        <div className="w-64 bg-white border-l border-gray-200 flex flex-col">
+          <div className="p-4 border-b border-gray-200">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-sm font-semibold text-gray-700">
+                Participants
+              </h2>
+              <button className="p-1 text-gray-500 hover:text-gray-700 rounded hover:bg-gray-100">
+                <PlusIcon className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="space-y-3">
+              {participants.map((participant) => (
+                <div
+                  key={participant.id}
+                  className="flex items-center space-x-3"
+                >
+                  <div className="relative">
+                    <img
+                      src={participant.avatar}
+                      alt={participant.name}
+                      className="w-8 h-8 rounded-full"
+                    />
+                    <span
+                      className={`absolute bottom-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white ${
+                        participant.status === "active"
+                          ? "bg-green-400"
+                          : "bg-gray-300"
+                      }`}
+                    />
+                  </div>
+                  <span className="text-sm text-gray-700">
+                    {participant.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Comments Section */}
+          <div className="flex-1 overflow-y-auto p-4">
+            <h2 className="text-sm font-semibold text-gray-700 mb-4">
+              Code Comments
+            </h2>
+            <div className="space-y-4">
+              {comments.map((comment) => (
+                <div key={comment.id} className="bg-gray-50 rounded-lg p-3">
+                  <div className="flex items-start justify-between">
+                    <span className="text-xs text-gray-500">
+                      Line {comment.lineNumber}
+                    </span>
+                    <button className="text-gray-400 hover:text-gray-600">
+                      <XMarkIcon className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <p className="text-sm font-medium text-gray-700 mt-1">
+                    {comment.user}
+                  </p>
+                  <p className="text-sm text-gray-600 mt-1">{comment.text}</p>
+                  <span className="text-xs text-gray-500 mt-2 block">
+                    {comment.timestamp}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Add Comment Input */}
+          <div className="p-4 border-t border-gray-200">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Add a comment..."
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Chat Sidebar */}
+        {showChat && (
+          <div className="w-80 bg-white border-l border-gray-200 flex flex-col">
+            <div className="p-4 border-b border-gray-200 flex items-center justify-between">
+              <h2 className="text-sm font-semibold text-gray-700">Chat</h2>
+              <button
+                className="text-gray-400 hover:text-gray-600"
+                onClick={() => setShowChat(false)}
+              >
+                <XMarkIcon className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-4">
+              {/* Chat messages would go here */}
+            </div>
+            <div className="p-4 border-t border-gray-200">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Type a message..."
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default App;
