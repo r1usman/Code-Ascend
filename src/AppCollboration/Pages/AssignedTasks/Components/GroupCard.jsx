@@ -51,11 +51,11 @@ const GroupCard = ({ group, currentUserId }) => {
           <span>Created: {formatDate(group.createdAt)}</span>
         </div>
         
-        <div className="flex items-center text-sm text-gray-500 mb-6">
+        <div className="flex items-center text-sm text-gray-500 mb-6  min-h-8">
           <Users className="h-4 w-4 mr-1" />
           <span>{group.members.length} member{group.members.length !== 1 ? 's' : ''}</span>
           {isAdmin && (
-            <span className="ml-2 px-2 py-0.5 bg-indigo-100 text-indigo-800 text-xs rounded-full">
+            <span className="inline-block ml-3 text-xs px-2 py-1 rounded-full bg-[#121212] border border-border_Col text-red-500 font-medium">
               Admin
             </span>
           )}
