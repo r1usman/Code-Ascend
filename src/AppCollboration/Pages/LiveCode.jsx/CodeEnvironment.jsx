@@ -8,66 +8,19 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/solid";
 
-const participants = [
-  {
-    id: "1",
-    name: "Sarah Chen",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
-    status: "active",
-  },
-  {
-    id: "2",
-    name: "John Doe",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=John",
-    status: "active",
-  },
-  {
-    id: "3",
-    name: "Alex Kim",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
-    status: "idle",
-  },
-];
+import {initialCode, participants ,chats} from "./index"
 
-const initialCode = `function solve(nums: number[]): number {
-  // Problem: Find the maximum subarray sum
-  let maxSum = nums[0];
-  let currentSum = nums[0];
-  
-  for (let i = 1; i < nums.length; i++) {
-    currentSum = Math.max(nums[i], currentSum + nums[i]);
-    maxSum = Math.max(maxSum, currentSum);
-  }
-  
-  return maxSum;
-}`;
-
-function App() {
+function CodeEnvironment() {
   const [showChat, setShowChat] = useState(false);
-  const [comments] = useState([
-    {
-      id: "1",
-      user: "Sarah Chen",
-      text: "We should add a check for empty array here",
-      timestamp: "2 min ago",
-      lineNumber: 2,
-    },
-    {
-      id: "2",
-      user: "John Doe",
-      text: "Good catch! Also consider handling negative numbers",
-      timestamp: "1 min ago",
-      lineNumber: 2,
-    },
-  ]);
+  const [comments] = useState(chats);
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-dark-bg-secondary3 text-white">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-4 py-3">
+      <header className=" border-b border-gray-200 px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <h1 className="text-xl font-semibold text-gray-900">
+            <h1 className="text-xl font-semibold ">
               Collaborative Coding Session
             </h1>
             <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
@@ -91,10 +44,10 @@ function App() {
         </div>
       </header>
 
-      <div className="flex-1 flex">
+      <div className="flex-1 flex bg-dark-bg-secondary3">
         {/* Main Editor */}
         <div className="flex-1 flex flex-col">
-          <div className="flex-1 bg-white">
+          <div className="flex-1 ">
             <Editor
               height="100%"
               defaultLanguage="typescript"
@@ -112,8 +65,8 @@ function App() {
         </div>
 
         {/* Participants Sidebar */}
-        <div className="w-64 bg-white border-l border-gray-200 flex flex-col">
-          <div className="p-4 border-b border-gray-200">
+        <div className="w-64  border-l border-border_Col flex flex-col">
+          <div className="p-4 border-b border-border_Col ">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-sm font-semibold text-gray-700">
                 Participants
@@ -221,4 +174,4 @@ function App() {
   );
 }
 
-export default App;
+export default CodeEnvironment;

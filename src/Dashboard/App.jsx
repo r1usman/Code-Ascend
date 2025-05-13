@@ -12,187 +12,30 @@ import {
   Trophy,
   User,
 } from 'lucide-react';
+
+import {notifications,achievements,recentActivities} from "./DashboardAssests/index.js"
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Navigation from "./Components/Navigation.jsx"
+import Sidebar from "./Components/Sidebar.jsx"
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const notifications = [
-    {
-      id: 1,
-      title: 'New Python Challenge Available',
-      time: '2m ago',
-      type: 'challenge',
-    },
-    {
-      id: 2,
-      title: 'Sarah commented on your solution',
-      time: '1h ago',
-      type: 'message',
-    },
-    {
-      id: 3,
-      title: "You earned the 'Code Ninja' badge!",
-      time: '2h ago',
-      type: 'achievement',
-    },
-  ];
-
-  const achievements = [
-    { id: 1, name: 'Algorithm Master', progress: 80, total: 100 },
-    { id: 2, name: 'Bug Crusher', progress: 45, total: 50 },
-    { id: 3, name: 'Code Reviewer', progress: 28, total: 30 },
-  ];
-
-  const recentActivities = [
-    {
-      id: 1,
-      title: "Completed 'Binary Search' challenge",
-      time: 'Today, 10:30 AM',
-      type: 'challenge',
-    },
-    {
-      id: 2,
-      title: "Earned 'Early Bird' badge",
-      time: 'Yesterday',
-      type: 'badge',
-    },
-    {
-      id: 3,
-      title: "Started 'Advanced React' course",
-      time: '2 days ago',
-      type: 'course',
-    },
-  ];
+  
 
   return (
     <div
       className={`min-h-screen ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}
     >
       {/* Navigation Header */}
-      <header
-        className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} shadow-sm`}
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center">
-              <Code2 className="h-8 w-8 text-blue-600" />
-              <span
-                className={`ml-2 text-xl font-bold ${
-                  isDarkMode ? 'text-white' : 'text-gray-900'
-                }`}
-              >
-                CodeAscend
-              </span>
-            </div>
-            <nav className="flex items-center space-x-4">
-              <button
-                className={`p-2 ${
-                  isDarkMode
-                    ? 'text-gray-300 hover:text-white'
-                    : 'text-gray-600 hover:text-blue-600'
-                } transition-colors`}
-                onClick={() => setIsDarkMode(!isDarkMode)}
-              >
-                {isDarkMode ? (
-                  <Sun className="h-6 w-6" />
-                ) : (
-                  <Moon className="h-6 w-6" />
-                )}
-              </button>
-              <button className="relative p-2 text-gray-600 hover:text-blue-600">
-                <Bell
-                  className={`h-6 w-6 ${
-                    isDarkMode
-                      ? 'text-gray-300 hover:text-white'
-                      : 'text-gray-600 hover:text-blue-600'
-                  }`}
-                />
-                <span className="absolute right-0 top-0 block h-2 w-2 rounded-full bg-red-500"></span>
-              </button>
-              <img
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32"
-                alt="Profile"
-                className="h-8 w-8 cursor-pointer rounded-full"
-              />
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Navigation isDarkMode={isDarkMode}/>
+    
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-12 gap-6">
-          {/* Sidebar Navigation */}
-          <div className="col-span-2">
-            <nav className="space-y-1">
-              <Link
-                to={'/'}
-                className={`flex items-center px-4 py-2 text-sm font-medium ${
-                  isDarkMode
-                    ? 'bg-blue-900/20 text-blue-400'
-                    : 'bg-blue-50 text-blue-600'
-                } rounded-lg`}
-              >
-                <Activity className="mr-3 h-5 w-5" />
-                Dashboard
-              </Link>
-              <Link
-                to={'/appchallenge@'}
-                className={`flex items-center px-4 py-2 text-sm font-medium ${
-                  isDarkMode
-                    ? 'text-gray-300 hover:bg-gray-800'
-                    : 'text-gray-600 hover:bg-gray-50'
-                } rounded-lg`}
-              >
-                <Code2 className="mr-3 h-5 w-5" />
-                Challenges
-              </Link>
-              <Link
-                to={'/appcollaboration'}
-                className={`flex items-center px-4 py-2 text-sm font-medium ${
-                  isDarkMode
-                    ? 'text-gray-300 hover:bg-gray-800'
-                    : 'text-gray-600 hover:bg-gray-50'
-                } rounded-lg`}
-              >
-                <BookOpen className="mr-3 h-5 w-5" />
-                Collaborations
-              </Link>
-              <Link
-                to={'/appshowcase'}
-                className={`flex items-center px-4 py-2 text-sm font-medium ${
-                  isDarkMode
-                    ? 'text-gray-300 hover:bg-gray-800'
-                    : 'text-gray-600 hover:bg-gray-50'
-                } rounded-lg`}
-              >
-                <MessageSquare className="mr-3 h-5 w-5" />
-                appshowcase
-              </Link>
-              <Link
-                to={'/appvirtuallab'}
-                className={`flex items-center px-4 py-2 text-sm font-medium ${
-                  isDarkMode
-                    ? 'text-gray-300 hover:bg-gray-800'
-                    : 'text-gray-600 hover:bg-gray-50'
-                } rounded-lg`}
-              >
-                <User className="mr-3 h-5 w-5" />
-                Appvirtuallab
-              </Link>
-              <Link
-                to={'/appeditor'}
-                className={`flex items-center px-4 py-2 text-sm font-medium ${
-                  isDarkMode
-                    ? 'text-gray-300 hover:bg-gray-800'
-                    : 'text-gray-600 hover:bg-gray-50'
-                } rounded-lg`}
-              >
-                <User className="mr-3 h-5 w-5" />
-                Appeditor
-              </Link>
-            </nav>
-          </div>
+          
+          <Sidebar/>
 
           {/* Main Content */}
           <div className="col-span-7">

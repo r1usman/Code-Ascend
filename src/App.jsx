@@ -1,25 +1,55 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import AppChallenge from './APPChallenge/App.jsx';
 import AppChallengeAt from './AppChallenge@/App.jsx';
-import AppCollaboration from './AppCollboration/App.jsx';
+import AppCollaboration from './AppCollboration/Pages/LiveCode.jsx/CodeEnvironment.jsx';
 import AppEditor from './AppEditor/App.jsx';
 import AppShowCase from './AppShowCase/App.jsx';
 import AppVirtualLab from './AppVirtualLab/App.jsx';
-import Dashboard from './Dashboard/App.jsx';
+import Dashboard from './Dashboard/Dashboard.jsx';
+import Front from './Front.jsx';
+import Login from './Authentication/Login.jsx';
+import Signup from './Authentication/SignUp.jsx';
+import Collboration from './AppCollboration/Collboration.jsx';
+import MyGroups from "./AppCollboration/Pages/MyGroups.jsx"
+import AllGroups from './AppCollboration/Pages/AllGroups.jsx';
+import CollaborationLayout from './AppCollboration/Layouts/CollaborationLayout.jsx';
+import TaskAssigned from './AppCollboration/Pages/AssignedTasks/TaskAssigned.jsx';
+import Nopage from './assests/Componets/Nopage.jsx';
+import TasksPage from './AppCollboration/Pages/AssignedTasks/TasksPage.jsx';
+import LivePair from './AppCollboration/Pages/LiveCode.jsx/LivePair.jsx';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<Login/>} />
+        <Route path='/SignUp' element={<Signup/>} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/appchallenge" element={<AppChallenge />} />
         <Route path="/appchallenge@" element={<AppChallengeAt />} />
-        <Route path="/appcollaboration" element={<AppCollaboration />} />
+
+
+        <Route path="/appcollaboration" element={<CollaborationLayout />}>
+          <Route index element={<Navigate to="all-groups" replace />} />
+          <Route path="all-groups" element={<AllGroups/>} />
+          <Route path="my-groups" element={<MyGroups />} />
+          <Route path="assigned-tasks" element={<TaskAssigned />}/ >
+          <Route path="tasks" element={<TasksPage/>} />
+          <Route path="code/live" element={<LivePair/>} />
+           <Route path="Live" element={<AppCollaboration/>} />
+          <Route path="*" element={<Nopage />} />
+          
+          
+        </Route>
+
+
+
+        
         <Route path="/appeditor" element={<AppEditor />} />
         <Route path="/appshowcase" element={<AppShowCase />} />
         <Route path="/appvirtuallab" element={<AppVirtualLab />} />
+        <Route path="*" element={<Nopage />} />
       </Routes>
     </Router>
   );
