@@ -45,14 +45,14 @@ function CodeEnvironment() {
       </header>
 
       <div className="flex-1 flex bg-dark-bg-secondary3">
-        {/* Main Editor */}
+       
         <div className="flex-1 flex flex-col">
           <div className="flex-1 ">
             <Editor
               height="100%"
               defaultLanguage="typescript"
               defaultValue={initialCode}
-              theme="vs-light"
+              theme="vs-dark"
               options={{
                 minimap: { enabled: false },
                 fontSize: 14,
@@ -63,23 +63,21 @@ function CodeEnvironment() {
             />
           </div>
         </div>
-
-        {/* Participants Sidebar */}
-        <div className="w-64  border-l border-border_Col flex flex-col">
+        <div className="w-64  border-l border-border_Col flex flex-col text-white">
           <div className="p-4 border-b border-border_Col ">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-sm font-semibold text-gray-700">
+              <h2 className="text-sm font-semibold ">
                 Participants
               </h2>
               <button className="p-1 text-gray-500 hover:text-gray-700 rounded hover:bg-gray-100">
                 <PlusIcon className="w-4 h-4" />
               </button>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-3 text-white ">
               {participants.map((participant) => (
                 <div
                   key={participant.id}
-                  className="flex items-center space-x-3"
+                  className="flex items-center space-x-3 rounded-md  py-1 bg-[#1e1e1e]"
                 >
                   <div className="relative">
                     <img
@@ -95,7 +93,7 @@ function CodeEnvironment() {
                       }`}
                     />
                   </div>
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm">
                     {participant.name}
                   </span>
                 </div>
@@ -103,14 +101,14 @@ function CodeEnvironment() {
             </div>
           </div>
 
-          {/* Comments Section */}
-          <div className="flex-1 overflow-y-auto p-4">
-            <h2 className="text-sm font-semibold text-gray-700 mb-4">
+          
+          <div className="text-white flex-1 overflow-y-auto p-4">
+            <h2 className="text-sm font-semibold  mb-4">
               Code Comments
             </h2>
             <div className="space-y-4">
               {comments.map((comment) => (
-                <div key={comment.id} className="bg-gray-50 rounded-lg p-3">
+                <div key={comment.id} className="bg-[#1e1e1e] rounded-lg p-3">
                   <div className="flex items-start justify-between">
                     <span className="text-xs text-gray-500">
                       Line {comment.lineNumber}
@@ -132,43 +130,16 @@ function CodeEnvironment() {
           </div>
 
           {/* Add Comment Input */}
-          <div className="p-4 border-t border-gray-200">
+          <div className="p-4 border-t bg-[#1e1e1e] border-gray-200">
             <div className="relative">
               <input
                 type="text"
                 placeholder="Add a comment..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border bg-[#1e1e1e] border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
           </div>
-        </div>
-
-        {/* Chat Sidebar */}
-        {showChat && (
-          <div className="w-80 bg-white border-l border-gray-200 flex flex-col">
-            <div className="p-4 border-b border-gray-200 flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-gray-700">Chat</h2>
-              <button
-                className="text-gray-400 hover:text-gray-600"
-                onClick={() => setShowChat(false)}
-              >
-                <XMarkIcon className="w-5 h-5" />
-              </button>
-            </div>
-            <div className="flex-1 overflow-y-auto p-4">
-              {/* Chat messages would go here */}
-            </div>
-            <div className="p-4 border-t border-gray-200">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Type a message..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-          </div>
-        )}
+        </div>      
       </div>
     </div>
   );

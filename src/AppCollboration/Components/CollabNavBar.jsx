@@ -6,7 +6,7 @@ import GroupSearch from './GroupSearch '
 
 const CollabNavBar = () => {
   return (
-     <div className='sticky top-0 z-40 bg-dark-bg-secondary2 border-b border-text_primary text-white font-poppins  font-medium px-4 py-5  '> 
+     <div className='sticky top-0 z-40 bg-dark-bg-secondary4 border-b border-text_primary text-white font-poppins  font-medium px-4 py-5  '> 
       <div className='flex items-center justify-between w-full'>
         <h1 className='text-2xl '>Code Ascend</h1>
         <div className='w-1/2'><GroupSearch/></div>

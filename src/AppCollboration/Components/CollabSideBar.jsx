@@ -15,7 +15,7 @@ const CollabSideBar = () => {
     
   return (
     <>
-    <div className=" w-64  bg-dark-bg-secondary3 min-h-screen py-28 sticky top-[75px] left-0  text-white border-gray-200/50 font-poppins z-20 ">            
+    <div className=" w-64  bg-dark-bg-secondary4 min-h-screen py-28 sticky top-[75px] left-0  text-white border-gray-200/50 font-poppins z-20 ">            
                   
 
        <div className='flex flex-col justify-between  h-[85vh] '>

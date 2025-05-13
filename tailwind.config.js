@@ -38,6 +38,7 @@ export default {
 
         dark: {
           "bg-primary": "#0A0A0C",
+          "bg-secondary4": "#1e1e1e",
           "bg-secondary3": "#121212",
           "bg-secondary2": "#171719",
           "bg-secondary1": "#1A1A1A",
