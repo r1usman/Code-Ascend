@@ -57,3 +57,20 @@
 .Card_Relative_top {
   @apply relative bg-dark-bg-secondary1 h-[20vh] rounded-xl overflow-hidden p-1 flex flex-col justify-between transition-transform transition-shadow duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:shadow-black/50 cursor-pointer
 }
+
+.Btn1 {
+  @apply flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2
+}
+
+
+.card {
+  @apply bg-dark-bg-secondary3 border-border_Col rounded-xl shadow-lg overflow-hidden border transition-all duration-300;
+}
+
+.card-hover {
+  @apply hover:border-black hover:shadow-xl hover:-translate-y-1;
+}
+
+.btn-ghost {
+  @apply Btn1 bg-transparent hover:bg-black text-white;
+}

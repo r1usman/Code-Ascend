@@ -1,7 +1,7 @@
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import AppChallenge from './APPChallenge/App.jsx';
-import AppChallengeAt from './AppChallenge@/App.jsx';
+import AppChallengeAt from './AppChallenge@/Layouts/AppLayout.jsx';
 import AppCollaboration from './AppCollboration/Pages/LiveCode.jsx/CodeEnvironment.jsx';
 import AppEditor from './AppEditor/App.jsx';
 import AppShowCase from './AppShowCase/App.jsx';
@@ -18,6 +18,12 @@ import TaskAssigned from './AppCollboration/Pages/AssignedTasks/TaskAssigned.jsx
 import Nopage from './assests/Componets/Nopage.jsx';
 import TasksPage from './AppCollboration/Pages/AssignedTasks/TasksPage.jsx';
 import LivePair from './AppCollboration/Pages/LiveCode.jsx/LivePair.jsx';
+import DefaultPage from './AppChallenge@/DefaultPage.jsx';
+
+import DashboardChallenge  from "./AppChallenge@/Pages/DashBoard/Dashboard.jsx"
+import DisplayProblemList from './AppChallenge@/Pages/ProblemList/DisplayProblemList.jsx';
+
+
 
 function App() {
   return (
@@ -27,7 +33,15 @@ function App() {
         <Route path='/SignUp' element={<Signup/>} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/appchallenge" element={<AppChallenge />} />
-        <Route path="/appchallenge@" element={<AppChallengeAt />} />
+
+        <Route path="/appchallenge@" element={<AppChallengeAt />} >
+          <Route index element={<Navigate to={"dashboard"}/>}/>
+          <Route path="dashboard" element={<DashboardChallenge/>} />
+          <Route path="problemlist" element={<DisplayProblemList/>} />
+          <Route path="*" element={<Nopage/>} />
+
+          
+        </Route>
 
 
         <Route path="/appcollaboration" element={<CollaborationLayout />}>
