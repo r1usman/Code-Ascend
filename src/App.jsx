@@ -22,6 +22,9 @@ import DefaultPage from './AppChallenge@/DefaultPage.jsx';
 
 import DashboardChallenge  from "./AppChallenge@/Pages/DashBoard/Dashboard.jsx"
 import DisplayProblemList from './AppChallenge@/Pages/ProblemList/DisplayProblemList.jsx';
+import ChallengeGroup from "./AppChallenge@/Pages/Groups/Groups.jsx"
+import Group from './AppChallenge@/Pages/Groups/Group.jsx';
+import ChallengeBoard from './AppChallenge@/Pages/LeaderBoard/ChallengeBoard.jsx';
 
 
 
@@ -38,9 +41,12 @@ function App() {
           <Route index element={<Navigate to={"dashboard"}/>}/>
           <Route path="dashboard" element={<DashboardChallenge/>} />
           <Route path="problemlist" element={<DisplayProblemList/>} />
+          <Route path="groups" element={<ChallengeGroup/>} />
+          <Route path="groups/:id" element={<Group/>} />
+          <Route path="leaderboard" element={<ChallengeBoard/>} />
+          
           <Route path="*" element={<Nopage/>} />
 
-          
         </Route>
 
 
@@ -51,15 +57,9 @@ function App() {
           <Route path="assigned-tasks" element={<TaskAssigned />}/ >
           <Route path="tasks" element={<TasksPage/>} />
           <Route path="code/live" element={<LivePair/>} />
-           <Route path="Live" element={<AppCollaboration/>} />
+          <Route path="Live" element={<AppCollaboration/>} />
           <Route path="*" element={<Nopage />} />
-          
-          
         </Route>
-
-
-
-        
         <Route path="/appeditor" element={<AppEditor />} />
         <Route path="/appshowcase" element={<AppShowCase />} />
         <Route path="/appvirtuallab" element={<AppVirtualLab />} />

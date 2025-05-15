@@ -113,6 +113,7 @@ const AllGroups = () => {
         ? { ...g, isJoined: true, membersCount: g.membersCount + 1 }
         : g
     ));
+    
   };
 
   const handleView = groupId => {
