@@ -5,7 +5,7 @@ const DEMO_USER = {
   id: 'user1',
   username: 'codemaster',
   email: 'demo@example.com',
-  name: 'Alex Johnson',
+  name: 'Usman Akram',
   bio: 'Full-stack developer with a passion for algorithms and problem-solving',
   avatarUrl: 'https://i.pravatar.cc/150?img=33',
   joinDate: new Date('2023-01-15'),

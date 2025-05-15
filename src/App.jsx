@@ -25,6 +25,7 @@ import DisplayProblemList from './AppChallenge@/Pages/ProblemList/DisplayProblem
 import ChallengeGroup from "./AppChallenge@/Pages/Groups/Groups.jsx"
 import Group from './AppChallenge@/Pages/Groups/Group.jsx';
 import ChallengeBoard from './AppChallenge@/Pages/LeaderBoard/ChallengeBoard.jsx';
+import Profile from './AppChallenge@/Pages/Profile/Profile.jsx';
 
 
 
@@ -44,7 +45,7 @@ function App() {
           <Route path="groups" element={<ChallengeGroup/>} />
           <Route path="groups/:id" element={<Group/>} />
           <Route path="leaderboard" element={<ChallengeBoard/>} />
-          
+          <Route path="profile" element={<Profile/>} />
           <Route path="*" element={<Nopage/>} />
 
         </Route>
