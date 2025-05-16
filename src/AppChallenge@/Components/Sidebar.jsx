@@ -28,6 +28,7 @@ const Sidebar = ({ closeSidebar }) => {
         <nav className="mt-5 px-2 space-y-1">
           {navItems.map((item) => (
             <NavLink
+            
               key={item.name}
               to={item.to}
               onClick={closeSidebar}

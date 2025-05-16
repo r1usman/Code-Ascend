@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 const LeadTable = ({displayLeaderboard , page , setPage , pageSize, globalLeaderboard}) => {
   return (
-     <div className="bg-dark-800 rounded-lg border border-dark-700 overflow-hidden">
-        <div className="px-4 py-3 bg-dark-700 grid grid-cols-12 gap-2 text-xs font-medium text-gray-400">
+     <div className=" rounded-lg border border-border_Col overflow-hidden">
+        <div className="px-4 py-3 bg-dark-bg-secondary1 grid grid-cols-12 gap-2 text-xs font-medium text-gray-400">
           <div className="col-span-1">Rank</div>
           <div className="col-span-5">User</div>
           <div className="col-span-2 text-right">Rating</div>
@@ -16,8 +16,8 @@ const LeadTable = ({displayLeaderboard , page , setPage , pageSize, globalLeader
           {displayLeaderboard.map((user, index) => (
             <motion.div
               key={user.id}
-              whileHover={{ backgroundColor: 'rgba(55, 65, 81, 0.3)' }}
-              className={`px-4 py-3 grid grid-cols-12 gap-2 items-center border-b border-dark-700 ${user.id === 'user1' ? 'bg-primary-900/20' : ''
+              
+              className={`px-4 py-3 bg-dark-bg-secondary3 grid grid-cols-12 gap-2 items-center border-b border-border_Col ${user.id === 'user1' ? 'bg-primary-900/20' : ''
                 }`}
             >
               <div className="col-span-1 flex items-center">

@@ -1,4 +1,4 @@
-import { Activity, BookOpen, Code2, LogOut, MessageSquare, Settings, User } from "lucide-react";
+import { Activity, BookOpen, Braces, Code2, LogOut, MessageSquare, Settings, User } from "lucide-react";
 
 export const notifications = [
     {
@@ -50,12 +50,12 @@ export const recentActivities = [
 
 
 export const navItems = [
+
     { to: '/Dashboard', label: 'Dashboard', Icon: Activity },
     { to: '/appchallenge@', label: 'Challenges', Icon: Code2 },
     { to: '/appcollaboration', label: 'Collaborations', Icon: BookOpen },
-
     { to: '/appvirtuallab', label: 'Virtual Lab', Icon: User },
-    { to: '/appeditor', label: 'Editor', Icon: User },
+    { to: '/appeditor/editor', label: 'Editor', Icon: Braces },
 ]
 
 export const setting = [

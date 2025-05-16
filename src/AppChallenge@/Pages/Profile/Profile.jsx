@@ -228,11 +228,11 @@ const Profile = () => {
         
         {/* Challenges Tab */}
         {activeTab === 'challenges' && (
-          <div className="bg-dark-800 rounded-lg border border-dark-700 overflow-hidden">
-            <div className="px-4 py-3 bg-dark-700 flex justify-between items-center">
+          <div className=" rounded-lg bg-dark-bg-secondary3 border  border-border_Col overflow-hidden">
+            <div className="px-4 py-3 bg-dark-bg-secondary1  flex justify-between items-center">
               <h3 className="text-lg font-semibold text-white">Solved Challenges</h3>
-              <div>
-                <select className="input py-1 px-3 text-sm">
+              <div className=''>
+                <select className="bg-dark-bg-secondary3 border border-border_Col rounded-md focus:outline-none ring-0 py-1 px-3 text-sm">
                   <option value="all">All Challenges</option>
                   <option value="easy">Easy</option>
                   <option value="medium">Medium</option>
@@ -240,47 +240,44 @@ const Profile = () => {
                 </select>
               </div>
             </div>
-            <div className="divide-y divide-dark-700">
+            <div className="divide-y divide-border_Col">
               {Array(10).fill(0).map((_, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ backgroundColor: 'rgba(55, 65, 81, 0.3)' }}
-                  className="p-4 grid grid-cols-12 gap-4 items-center"
-                >
-                  <div className="col-span-6">
-                    <p className="text-white font-medium">Challenge {i + 1}</p>
-                    <p className="text-sm text-gray-400">Category: {['Arrays', 'Strings', 'Dynamic Programming', 'Trees', 'Graphs'][i % 5]}</p>
-                  </div>
-                  <div className="col-span-2">
-                    <span className={`badge ${
-                      i % 3 === 0 ? 'badge-success' :
-                      i % 3 === 1 ? 'badge-warning' :
-                      'badge-error'
-                    }`}>
-                      {i % 3 === 0 ? 'Easy' : i % 3 === 1 ? 'Medium' : 'Hard'}
-                    </span>
-                  </div>
-                  <div className="col-span-2 text-gray-400 text-sm">
-                    {new Date(Date.now() - i * 86400000 * 2).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                  </div>
-                  <div className="col-span-2 text-right">
-                    <span className="text-primary-400 font-mono">{(i * 50 + 100).toLocaleString()}ms</span>
-                  </div>
-                </motion.div>
+               <div
+                    className="p-4 grid grid-cols-12 gap-4 items-center hover:bg-dark-bg-secondary4"
+                  >
+                    <div className="col-span-6">
+                      <p className="text-white font-medium">Challenge {i + 1}</p>
+                      <p className="text-sm text-gray-400">
+                        Category: {['Arrays', 'Strings', 'Dynamic Programming', 'Trees', 'Graphs'][i % 5]}
+                      </p>
+                    </div>
+                    <div className="col-span-2">
+                      <span>
+                        {i % 3 === 0 ? 'Easy' : i % 3 === 1 ? 'Medium' : 'Hard'}
+                      </span>
+                    </div>
+                    <div className="col-span-2 text-gray-400 text-sm">
+                      {new Date(Date.now() - i * 86400000 * 2).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                    </div>
+                    <div className="col-span-2 text-right">
+                      <span className="font-mono">{(i * 50 + 100).toLocaleString()}ms</span>
+                    </div>
+                </div>
+
               ))}
             </div>
-            <div className="p-4 bg-dark-700 border-t border-dark-600 flex justify-center">
-              <button className="text-primary-400 hover:text-primary-300 text-sm">
-                Load More
-              </button>
+              <div className="p-4 bg-dark-700 border-t border-dark-600 flex justify-center">
+                <button className="text-primary-400 hover:text-primary-300 text-sm">
+                  Load More
+                </button>
+              </div>
             </div>
-          </div>
         )}
         
         {/* Achievements Tab */}
         {activeTab === 'achievements' && (
-          <div className="bg-dark-800 rounded-lg border border-dark-700 overflow-hidden">
-            <div className="px-4 py-3 bg-dark-700">
+          <div className="bg-dark-bg-secondary3  rounded-lg border border-border_Col  overflow-hidden">
+            <div className="px-4 py-3 bg-dark-bg-secondary1">
               <h3 className="text-lg font-semibold text-white">Achievements</h3>
             </div>
             <div className="p-6">
@@ -288,57 +285,60 @@ const Profile = () => {
                 {Array(6).fill(0).map((_, i) => {
                   const isUnlocked = i < 3;
                   return (
-                    <motion.div
-                      key={i}
-                      whileHover={{ scale: isUnlocked ? 1.05 : 1 }}
-                      className={`rounded-lg p-5 border ${ isUnlocked ? 'bg-gradient-to-br from-dark-800 to-dark-700 border-primary-500/30' : 'bg-dark-800/50 border-dark-700 opacity-60' }`}
-                    >
-                      <div className="flex items-center justify-center h-16 mb-4">
-                        <div className={`text-3xl ${!isUnlocked && 'grayscale opacity-50'}`}>
-                          {['🧠', '⚡', '🌟', '🏆', '🔥', '💎'][i]}
+                    <div
+                          className={`rounded-lg p-5 bg-dark-bg-secondary1  border border-border_Col transition-transform duration-200 ${
+                            isUnlocked
+                              ? 'hover:scale-105 bg-gradient-to-br from-dark-800 to-dark-700 border-primary-500/30'
+                              : 'bg-dark-800/50 border-dark-700 opacity-60'
+                          }`}
+                        >
+                          <div className="flex items-center  justify-center h-16 mb-4">
+                            <div className={`text-3xl ${!isUnlocked && 'grayscale opacity-50'}`}>
+                              {['🧠', '⚡', '🌟', '🏆', '🔥', '💎'][i]}
+                            </div>
+                          </div>
+                          <h3 className="text-center text-white font-semibold mb-1">
+                            {[
+                              'Algorithm Master',
+                              'Fast Solver',
+                              'JavaScript Guru',
+                              'Tournament Champion',
+                              'Streak Keeper',
+                              'Diamond Coder',
+                            ][i]}
+                          </h3>
+                          <p className="text-center text-sm text-gray-400">
+                            {[
+                              'Solve 50 algorithm challenges',
+                              'Solve a Hard challenge in under 10 minutes',
+                              'Complete all JavaScript challenges',
+                              'Win a tournament with 10+ participants',
+                              'Solve a challenge every day for 30 days',
+                              'Reach top 10 on the global leaderboard',
+                            ][i]}
+                          </p>
+                          {isUnlocked ? (
+                            <div className="mt-3 flex items-center justify-center text-xs text-success-500">
+                              <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              Unlocked
+                            </div>
+                          ) : (
+                            <div className="mt-3 flex items-center justify-center text-xs text-gray-500">
+                              <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                              </svg>
+                              Locked
+                            </div>
+                          )}
                         </div>
-                      </div>
-                      <h3 className="text-center text-white font-semibold mb-1">
-                        {[
-                          'Algorithm Master', 
-                          'Fast Solver', 
-                          'JavaScript Guru',
-                          'Tournament Champion',
-                          'Streak Keeper',
-                          'Diamond Coder'
-                        ][i]}
-                      </h3>
-                      <p className="text-center text-sm text-gray-400">
-                        {[
-                          'Solve 50 algorithm challenges',
-                          'Solve a Hard challenge in under 10 minutes',
-                          'Complete all JavaScript challenges',
-                          'Win a tournament with 10+ participants',
-                          'Solve a challenge every day for 30 days',
-                          'Reach top 10 on the global leaderboard'
-                        ][i]}
-                      </p>
-                      {isUnlocked ? (
-                        <div className="mt-3 flex items-center justify-center text-xs text-success-500">
-                          <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          Unlocked
-                        </div>
-                      ) : (
-                        <div className="mt-3 flex items-center justify-center text-xs text-gray-500">
-                          <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                          </svg>
-                          Locked
-                        </div>
-                      )}
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+
+                                          );
+                                        })}
+                    </div>
+                  </div>
+        </div>
         )}
       </div>
     </div>

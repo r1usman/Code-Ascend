@@ -3,7 +3,7 @@ import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-d
 import AppChallenge from './APPChallenge/App.jsx';
 import AppChallengeAt from './AppChallenge@/Layouts/AppLayout.jsx';
 import AppCollaboration from './AppCollboration/Pages/LiveCode.jsx/CodeEnvironment.jsx';
-import AppEditor from './AppEditor/App.jsx';
+import AppEditor from './AppEditor/CodeEditor.jsx';
 import AppShowCase from './AppShowCase/App.jsx';
 import AppVirtualLab from './AppVirtualLab/App.jsx';
 import Dashboard from './Dashboard/Dashboard.jsx';
@@ -26,7 +26,8 @@ import ChallengeGroup from "./AppChallenge@/Pages/Groups/Groups.jsx"
 import Group from './AppChallenge@/Pages/Groups/Group.jsx';
 import ChallengeBoard from './AppChallenge@/Pages/LeaderBoard/ChallengeBoard.jsx';
 import Profile from './AppChallenge@/Pages/Profile/Profile.jsx';
-
+import EditorLayout from './AppEditor/Layouts/EditorLayout.jsx';
+import CodeEditor from "./AppEditor/CodeEditor.jsx"
 
 
 function App() {
@@ -61,7 +62,11 @@ function App() {
           <Route path="Live" element={<AppCollaboration/>} />
           <Route path="*" element={<Nopage />} />
         </Route>
-        <Route path="/appeditor" element={<AppEditor />} />
+        <Route path="/appeditor" element={<EditorLayout />} >
+          <Route index element={<Navigate to='editor' replace />}/>
+          <Route path='editor' element={<CodeEditor/>}/>
+          <Route path="*" element={<Nopage />} />
+        </Route>
         <Route path="/appshowcase" element={<AppShowCase />} />
         <Route path="/appvirtuallab" element={<AppVirtualLab />} />
         <Route path="*" element={<Nopage />} />
