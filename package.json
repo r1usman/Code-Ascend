@@ -23,6 +23,7 @@
     "react-redux": "^8.0.5",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.11.0",
+    "react-toastify": "^11.0.5",
     "recharts": "^2.15.3",
     "tailwind-clip-path": "^1.0.0"
   },

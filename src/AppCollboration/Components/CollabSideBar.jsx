@@ -19,7 +19,7 @@ const CollabSideBar = () => {
                   
 
        <div className='flex flex-col justify-between  h-[85vh] '>
-          <div className='space-y-3'>
+          <div className='space-y-3 px-2'>
             {sidebarItems.map((item, index) => (
             
 

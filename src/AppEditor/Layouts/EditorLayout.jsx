@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavBar } from '../../Dashboard/Components/NavBar';
 import SideBar from '../../Components/SiderBar';
-import Code from "../CodeEditor.jsx";
+import CodeingEnvironment from '../CodeingEnvironment.jsx';
 
 const EditorLayout = ({ activeMenu }) => {
   const User = true;
@@ -9,7 +9,7 @@ const EditorLayout = ({ activeMenu }) => {
 
   return (
     <>
-      <div className="flex flex-col h-screen overflow-hidden">
+      <div className="flex flex-col h-screen overflow-hidden bg-dark-bg-secondary1">
         <NavBar />
 
         {User && (
@@ -29,8 +29,8 @@ const EditorLayout = ({ activeMenu }) => {
             </div>
 
            
-            <div className="flex-1 overflow-auto px-5 pt-4">
-              <Code />
+            <div className="flex-1 overflow-auto px-5 pt-4 bg-dark-bg-secondary3">
+              <CodeingEnvironment />
             </div>
           </div>
         )}

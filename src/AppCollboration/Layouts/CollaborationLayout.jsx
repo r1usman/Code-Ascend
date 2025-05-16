@@ -22,7 +22,7 @@ const CollaborationLayout = ({ children }) => {
           <CollabNavBar/>
           {User && (
             <>
-              <div className="fixed top-0 left-0 w-64 z-20 h-screen">
+              <div className="fixed top-0 left-0 w-64 z-20 h-screen ">
                 <CollabSideBar />
               </div>
 

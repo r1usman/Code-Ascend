@@ -56,23 +56,23 @@ const Sidebar = ({ closeSidebar }) => {
         </nav>
       </div>
 
-      <div className="p-4 border-t border-dark-700">
-        <div className="rounded-lg bg-dark-700 p-3">
+      <div className="p-4 border-t border-border_Col">
+        <div className="rounded-lg bg-[#242424] p-3">
           <div className="flex items-center">
-            <div className="text-accent-500">
+            <div className="text-emerald-500">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
             <div className="ml-3">
               <p className="text-sm font-medium text-white">Quick Challenge</p>
-              <p className="text-xs text-gray-400">5 min coding sprint</p>
+              <p className="text-xs text-slate-300 ">5 min coding sprint</p>
             </div>
           </div>
           <NavLink 
-            to="/challenges"
+            to="/appchallenge@/problemlist"
             onClick={closeSidebar}
-            className="mt-3 block text-center rounded-md bg-accent-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-600 transition-colors"
+            className=" mt-3 block text-center rounded-md bg-emerald-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-600 transition-colors"
           >
             Start Now
           </NavLink>
