@@ -5,13 +5,17 @@ import { validateEmail } from './AuthAssest/valideEmail';
 import {useNavigate} from "react-router-dom"
 import PhotoSelector from './Components/PhotoSelector';
 import CustomDiv from './Components/RightBar.jsx/CustomDiv';
+import PasswordStrength from './Components/PasswordStrength';
 // import UploadImage from './components/UploadImage';
 
 const SignUp = () => {
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
   const [name, setname] = useState('')
-  const [adminToken, setadminToken] = useState('')
+  const [PassStatus, setPassStatus] = useState('')
+  const [ConfirmPass, setConfirmPass] = useState('')
+
+ 
 
   const [error, seterror] = useState('');
   const [hide, sethide] = useState(true); 
@@ -67,6 +71,12 @@ const SignUp = () => {
   const handelRequest = async (e) => {
     e.preventDefault();
 
+    if(ConfirmPass !== password)
+    {
+      seterror("Password didnt match !")
+      return 
+    }
+
     if(!name)
     {
       seterror("Please Enter Your Name")
@@ -88,6 +98,13 @@ const SignUp = () => {
         seterror("Please Enter the Password")
         return;
       }
+     if(PassStatus !=='strong')
+      {
+        seterror("Strong Password is Required")
+        return;
+      }
+      
+    
     seterror("")
     navigate("/dashboard")
     // sendData()
@@ -107,15 +124,15 @@ const SignUp = () => {
   return (
     <>
       <div className='relative h-screen overflow-hidden flex flex-row font-poppins bg-dark-bg-secondary2 text-white'>
-      <div className='w-[60%] flex flex-col space-y-5  h-screen py-10 px-16'>
-          <h1 className='font-semibold text-2xl'>Code Ascend</h1>
+        <div className='w-[60%] flex flex-col space-y-3   h-screen py-5 px-16'>
+          <h1 className='font-semibold text-2xl '>Code Ascend</h1>
           <div className='flex flex-col justify-center  h-full'>
-            <div className='flex flex-col gap-5'>
+            <div className='flex flex-col  py-2 gap-3'>
               <div className='space-y-1'>
                 <h1 className='font-semibold text-2xl'>Create an Account</h1>
                 <p className='text-xs font-semibold '>Join us today by entering your details below.</p>
               </div>
-              <form className='flex flex-col gap-4'>
+              <form className='flex flex-col gap-3'>
                 <PhotoSelector image= {ProfilePic} setimage= {setProfilePic } />
                 <div className='space-y-6'>
                   <div className='flex gap-5 w-full  px-5'>
@@ -147,40 +164,27 @@ const SignUp = () => {
                   </div>
                   <div className='flex gap-5 items-center w-full  px-5'>
                     
-                      <div className='w-full space-y-2'>
-                        <label className='font-semibold'>Password</label>
-                        <div className='relative w-full  flex items-center'>
-                          <input
-                            className='w-full p-2 pr-10 bg-slate-100 focus:outline-none text-slate-700 border border-slate-200 rounded-sm placeholder:text-slate-700'
-                            type={hide ? 'password' : 'text'}
-                            value={password}
-                            placeholder='Password'
-                            onChange={(e) => setpassword(e.target.value)}
-                          />
-                          <button onClick={ToggleHide} className='absolute right-2 top-1/2 -translate-y-1/2'>
-                            {hide ? <EyeOff className='text-Pro5-primary' /> : <Eye className='text-Pro5-primary' />}
-                          </button>
-                      </div>
-                    </div>
-                    <div className='flex flex-col w-full space-y-2'>
+                     <PasswordStrength  password={password} setpassword={setpassword} hide={hide} ToggleHide={ToggleHide} setPassStatus={setPassStatus}/>
+                    <div className='flex flex-col w-full space-y-2   min-h-[104px]'>
                         <label htmlFor='' className='font-semibold'>
-                          Admin Invite Code
+                          Confirm Password
                         </label>
                         <input
                           className='w-full p-2 bg-slate-100 focus:outline-none text-slate-700 border border-slate-200 rounded-sm placeholder:text-slate-700'
                           type='text'
-                          value={adminToken}
-                          placeholder='6 Digit Code'
-                          onChange={(e) => setadminToken(e.target.value)}
+                          value={ConfirmPass}
+                          placeholder=''
+                          onChange={(e)=>setConfirmPass(e.target.value)}
                         />
                       </div>
 
                   </div>
                 </div>
                
-                <p className='text-xs text-red-600 px-5 '>{error}</p>
-                <button className='hover:bg-text_primary hover:opacity-75 focus:outline-none focus:outline-slate-200 transition-all ease-in duration-150 bg-text_primary py-2 mx-4 text-white uppercase tracking-wider rounded-sm font-semibold text-sm' onClick={handelRequest}>Sign UP</button>
+                <button className='focus:outline-none ring-0 hover:bg-text_primary hover:opacity-75  transition-all ease-in duration-150 bg-text_primary py-2 mx-4 text-white uppercase tracking-wider rounded-sm font-semibold text-sm' onClick={handelRequest}>Sign UP</button>
               </form>
+              <p className='text-xs text-red-600 px-5  '>{error}</p>
+
               <p className='text-xs px-5'>
                 Alreday have an account? <span className='underline text-task_primary' onClick={()=>navigate("/")}>Login</span>
               </p>

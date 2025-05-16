@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { NavBar } from '../../Dashboard/Components/NavBar';
 import SideBar from '../../Components/SiderBar';
 import CodeingEnvironment from '../CodeingEnvironment.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditorLayout = ({ activeMenu }) => {
   const User = true;
