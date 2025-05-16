@@ -173,7 +173,7 @@ const SignUp = () => {
                           className='w-full p-2 bg-slate-100 focus:outline-none text-slate-700 border border-slate-200 rounded-sm placeholder:text-slate-700'
                           type='text'
                           value={ConfirmPass}
-                          placeholder=''
+                          placeholder='Confirm Password'
                           onChange={(e)=>setConfirmPass(e.target.value)}
                         />
                       </div>
