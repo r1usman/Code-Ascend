@@ -66,18 +66,18 @@ function App() {
             <Route path="code/live" element={<LivePair />} />
             <Route path="AdminTask" element={<AdminCreateTask />} />
             <Route path="Live" element={<AppCollaboration />} />
-            <Route path="/instructor-courses" element={<InstructorCourses />} />
-            <Route path="/student-courses" element={<StudentCourses />} />
+            <Route path="*" element={<Nopage />} />
+            <Route path="instructor-courses" element={<InstructorCourses />} />
+            <Route path="student-courses" element={<StudentCourses />} />
             <Route
-              path="/instructor-manage"
+              path="instructor-manage"
               element={<CourseManagementPage />}
             />
             <Route
-              path="/student-manage"
+              path="student-manage"
               element={<StudentCourseDetailPage />}
             />
-            <Route path="/class-live" element={<VirtualLearningInterface />} />
-            <Route path="*" element={<Nopage />} />
+            <Route path="class-live" element={<VirtualLearningInterface />} />
           </Route>
         </Routes>
       </Router>
