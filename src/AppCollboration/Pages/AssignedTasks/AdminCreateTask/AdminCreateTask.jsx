@@ -2,7 +2,7 @@ import React from 'react'
 
 const AdminCreateTask = () => {
   return (
-    <div className='min-h-screen'>AdminCreateTask</div>
+    <div className='min-h-screen text-red-500'>AdminCreateTask </div>
   )
 }
 
