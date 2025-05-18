@@ -29,6 +29,7 @@ import Profile from './AppChallenge@/Pages/Profile/Profile.jsx';
 import EditorLayout from './AppEditor/Layouts/EditorLayout.jsx';
 
 import CodeingEnvironment from './AppEditor/CodeingEnvironment.jsx';
+import AdminCreateTask from './AppCollboration/Pages/AssignedTasks/AdminCreateTask/AdminCreateTask.jsx';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
           <Route path="assigned-tasks" element={<TaskAssigned />}/ >
           <Route path="tasks" element={<TasksPage/>} />
           <Route path="code/live" element={<LivePair/>} />
+          <Route path="AdminTask" element={<AdminCreateTask/>} />
           <Route path="Live" element={<AppCollaboration/>} />
           <Route path="*" element={<Nopage />} />
         </Route>
