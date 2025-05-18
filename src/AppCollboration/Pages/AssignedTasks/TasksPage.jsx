@@ -3,7 +3,7 @@ import TaskList from './Components/TaskList';
 import Button from './UI/Button';
 import { Download } from 'lucide-react';
 import Breadcrumb from './Components/Breadcrumb';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 import {initialTasks} from "./Utils/index"
 
@@ -13,6 +13,7 @@ const TasksPage = () => {
   const [filter, setFilter] = useState('All');
 
    const location = useLocation();
+   const navigate = useNavigate()
   
     
     const data = location.state?.UserRole || "Default Role";
@@ -64,12 +65,17 @@ const TasksPage = () => {
             </button>
           ))}
           </div>
-          {
-            data=="admin" && (
-                        <div className=' px-5 py-2 space-x-2 cursor-pointer rounded-md bg-text_primary'><span>+</span><span>Add Tasks</span></div>
-
-            )
-          }
+          
+            {data === "admin" && (
+              <div
+                onClick={() => navigate("/appcollaboration/AdminTask")}
+                className="px-5 py-2 space-x-2 cursor-pointer rounded-md bg-text_primary"
+              >
+                <span>+</span>
+                <span>Add Tasks</span>
+              </div>
+          )}
+              
         </div>
 
         <TaskList tasks={filteredTasks} />
