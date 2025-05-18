@@ -41,7 +41,7 @@ function App() {
     <RoleProvider>
       <Router>
         <Routes>
-          <Route path="" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/SignUp" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/appchallenge" element={<AppChallenge />} />
@@ -66,7 +66,6 @@ function App() {
             <Route path="code/live" element={<LivePair />} />
             <Route path="AdminTask" element={<AdminCreateTask />} />
             <Route path="Live" element={<AppCollaboration />} />
-            <Route path="*" element={<Nopage />} />
             <Route path="/instructor-courses" element={<InstructorCourses />} />
             <Route path="/student-courses" element={<StudentCourses />} />
             <Route
@@ -78,6 +77,7 @@ function App() {
               element={<StudentCourseDetailPage />}
             />
             <Route path="/class-live" element={<VirtualLearningInterface />} />
+            <Route path="*" element={<Nopage />} />
           </Route>
         </Routes>
       </Router>
