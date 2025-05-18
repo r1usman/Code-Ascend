@@ -7,14 +7,14 @@ import {
 
 import AppChallenge from './APPChallenge/App.jsx';
 import AppChallengeAt from './AppChallenge@/Layouts/AppLayout.jsx';
+import AppCollaboration from './AppCollboration/Pages/LiveCode.jsx/CodeEnvironment.jsx';
+
 import CollaborationLayout from './AppCollboration/Layouts/CollaborationLayout.jsx';
 import AllGroups from './AppCollboration/Pages/AllGroups.jsx';
 import TaskAssigned from './AppCollboration/Pages/AssignedTasks/TaskAssigned.jsx';
 import TasksPage from './AppCollboration/Pages/AssignedTasks/TasksPage.jsx';
-import AppCollaboration from './AppCollboration/Pages/LiveCode.jsx/CodeEnvironment.jsx';
 import LivePair from './AppCollboration/Pages/LiveCode.jsx/LivePair.jsx';
 import MyGroups from './AppCollboration/Pages/MyGroups.jsx';
-import AppEditor from './AppEditor/App.jsx';
 import AppShowCase from './AppShowCase/App.jsx';
 import AppVirtualLab from './AppVirtualLab/App.jsx';
 import Nopage from './assests/Componets/Nopage.jsx';
@@ -23,12 +23,19 @@ import Signup from './Authentication/SignUp.jsx';
 import Dashboard from './Dashboard/Dashboard.jsx';
 
 import DashboardChallenge from './AppChallenge@/Pages/DashBoard/Dashboard.jsx';
+import Group from './AppChallenge@/Pages/Groups/Group.jsx';
+import ChallengeGroup from './AppChallenge@/Pages/Groups/Groups.jsx';
+import ChallengeBoard from './AppChallenge@/Pages/LeaderBoard/ChallengeBoard.jsx';
 import DisplayProblemList from './AppChallenge@/Pages/ProblemList/DisplayProblemList.jsx';
+import Profile from './AppChallenge@/Pages/Profile/Profile.jsx';
+import EditorLayout from './AppEditor/Layouts/EditorLayout.jsx';
+
 import { RoleProvider } from './AppCourses/context/CoursesContext.jsx';
 import CourseManagementPage from './AppCourses/pages/CourseManagement.jsx';
 import InstructorCourses from './AppCourses/pages/InstructorCourses.jsx';
 import StudentCourseDetailPage from './AppCourses/pages/StudentCourseDetails.jsx';
 import StudentCourses from './AppCourses/pages/StudentCourses.jsx';
+import CodeingEnvironment from './AppEditor/CodeingEnvironment.jsx';
 import VirtualLearningInterface from './AppLiveClass/VirtualLearningInterface.jsx';
 
 function App() {
@@ -46,6 +53,10 @@ function App() {
             <Route index element={<Navigate to={'dashboard'} />} />
             <Route path="dashboard" element={<DashboardChallenge />} />
             <Route path="problemlist" element={<DisplayProblemList />} />
+            <Route path="groups" element={<ChallengeGroup />} />
+            <Route path="groups/:id" element={<Group />} />
+            <Route path="leaderboard" element={<ChallengeBoard />} />
+            <Route path="profile" element={<Profile />} />
             <Route path="*" element={<Nopage />} />
           </Route>
 
@@ -59,8 +70,11 @@ function App() {
             <Route path="Live" element={<AppCollaboration />} />
             <Route path="*" element={<Nopage />} />
           </Route>
-
-          <Route path="/appeditor" element={<AppEditor />} />
+          <Route path="/appeditor" element={<EditorLayout />}>
+            <Route index element={<Navigate to="editor" replace />} />
+            <Route path="editor" element={<CodeingEnvironment />} />
+            <Route path="*" element={<Nopage />} />
+          </Route>
           <Route path="/appshowcase" element={<AppShowCase />} />
           <Route path="/appvirtuallab" element={<AppVirtualLab />} />
           <Route path="*" element={<Nopage />} />
