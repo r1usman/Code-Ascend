@@ -15,8 +15,6 @@ import TaskAssigned from './AppCollboration/Pages/AssignedTasks/TaskAssigned.jsx
 import TasksPage from './AppCollboration/Pages/AssignedTasks/TasksPage.jsx';
 import LivePair from './AppCollboration/Pages/LiveCode.jsx/LivePair.jsx';
 import MyGroups from './AppCollboration/Pages/MyGroups.jsx';
-import AppShowCase from './AppShowCase/App.jsx';
-import AppVirtualLab from './AppVirtualLab/App.jsx';
 import Nopage from './assests/Componets/Nopage.jsx';
 import Login from './Authentication/Login.jsx';
 import Signup from './Authentication/SignUp.jsx';
@@ -28,14 +26,13 @@ import ChallengeGroup from './AppChallenge@/Pages/Groups/Groups.jsx';
 import ChallengeBoard from './AppChallenge@/Pages/LeaderBoard/ChallengeBoard.jsx';
 import DisplayProblemList from './AppChallenge@/Pages/ProblemList/DisplayProblemList.jsx';
 import Profile from './AppChallenge@/Pages/Profile/Profile.jsx';
-import EditorLayout from './AppEditor/Layouts/EditorLayout.jsx';
 
+import AdminCreateTask from './AppCollboration/Pages/AssignedTasks/AdminCreateTask/AdminCreateTask.jsx';
 import { RoleProvider } from './AppCourses/context/CoursesContext.jsx';
 import CourseManagementPage from './AppCourses/pages/CourseManagement.jsx';
 import InstructorCourses from './AppCourses/pages/InstructorCourses.jsx';
 import StudentCourseDetailPage from './AppCourses/pages/StudentCourseDetails.jsx';
 import StudentCourses from './AppCourses/pages/StudentCourses.jsx';
-import CodeingEnvironment from './AppEditor/CodeingEnvironment.jsx';
 import VirtualLearningInterface from './AppLiveClass/VirtualLearningInterface.jsx';
 
 function App() {
@@ -67,22 +64,21 @@ function App() {
             <Route path="assigned-tasks" element={<TaskAssigned />} />
             <Route path="tasks" element={<TasksPage />} />
             <Route path="code/live" element={<LivePair />} />
+            <Route path="AdminTask" element={<AdminCreateTask />} />
             <Route path="Live" element={<AppCollaboration />} />
             <Route path="*" element={<Nopage />} />
+            <Route path="/instructor-courses" element={<InstructorCourses />} />
+            <Route path="/student-courses" element={<StudentCourses />} />
+            <Route
+              path="/instructor-manage"
+              element={<CourseManagementPage />}
+            />
+            <Route
+              path="/student-manage"
+              element={<StudentCourseDetailPage />}
+            />
+            <Route path="/class-live" element={<VirtualLearningInterface />} />
           </Route>
-          <Route path="/appeditor" element={<EditorLayout />}>
-            <Route index element={<Navigate to="editor" replace />} />
-            <Route path="editor" element={<CodeingEnvironment />} />
-            <Route path="*" element={<Nopage />} />
-          </Route>
-          <Route path="/appshowcase" element={<AppShowCase />} />
-          <Route path="/appvirtuallab" element={<AppVirtualLab />} />
-          <Route path="*" element={<Nopage />} />
-          <Route path="/instructor-courses" element={<InstructorCourses />} />
-          <Route path="/student-courses" element={<StudentCourses />} />
-          <Route path="/instructor-manage" element={<CourseManagementPage />} />
-          <Route path="/student-manage" element={<StudentCourseDetailPage />} />
-          <Route path="/live" element={<VirtualLearningInterface />} />
         </Routes>
       </Router>
     </RoleProvider>

@@ -186,7 +186,7 @@ const SignUp = () => {
               <p className='text-xs text-red-600 px-5  '>{error}</p>
 
               <p className='text-xs px-5'>
-                Alreday have an account? <span className='underline text-task_primary' onClick={()=>navigate("/")}>Login</span>
+                Alreday have an account? <span className='underline text-task_primary cursor-pointer' onClick={()=>navigate("/")}>Login</span>
               </p>
             </div>
           </div>

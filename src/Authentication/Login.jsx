@@ -139,7 +139,7 @@ const Login = () => {
                 <button className='w-[60%] hover:bg-text_primary hover:opacity-70 transition-all ease-in duration-150 bg-text_primary py-2 text-white uppercase tracking-wider rounded-sm font-semibold text-sm' onClick={handelRequest}>Login</button>
               </form>
               <p className='text-xs'>
-                Don't have an account? <span className='underline text-task_primary' onClick={()=>navigate("/SignUp")}>Sign Up</span>
+                Don't have an account? <span className='underline text-task_primary cursor-pointer' onClick={()=>navigate("/SignUp")}>Sign Up</span>
               </p>
             </div>
           </div>
