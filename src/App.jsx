@@ -41,7 +41,7 @@ function App() {
     <RoleProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="" element={<Login />} />
           <Route path="/SignUp" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/appchallenge" element={<AppChallenge />} />
