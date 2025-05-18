@@ -1,10 +1,11 @@
-import { Eye, EyeOff } from 'lucide-react'
+import { Bell, Eye, EyeOff, Lightbulb } from 'lucide-react'
 import React, { useState } from 'react'
 
 const PasswordStrength = ({password , setpassword , ToggleHide ,hide ,setPassStatus}) => {
 
     const [Message, setMessage] = useState("")
     const [Progress, setProgress] = useState("")
+    const [hiddenMsg, sethiddenMsg] = useState(false)
 
 
     const handleChanges = (e) => {
@@ -37,10 +38,29 @@ const PasswordStrength = ({password , setpassword , ToggleHide ,hide ,setPassSta
     return "#ff0000"; // Red
   };
 
-
+  const HandleMessage=()=>{
+    sethiddenMsg(true)
+    
+  }
+  const HandleMessageLeave=()=>{
+    sethiddenMsg(false)
+    
+  }
   return (
      <div className='w-full space-y-2  min-h-[104px]' >
-        <label className='font-semibold'>Password</label>
+        <div className='relative flex items-center justify-between'>
+            <label className='font-semibold' >Password</label>
+            <span><Lightbulb onMouseEnter={HandleMessage} onMouseLeave={HandleMessageLeave}/></span>
+            {
+                hiddenMsg && (
+                    <p className='absolute'> 
+                        <div className='bg-white'>
+                            8 digit
+                        </div>
+                    </p>
+                )
+            }
+        </div>
         <div className='relative w-full  flex items-center'>
             <div className='relative w-full  flex items-center'>
                 <input
