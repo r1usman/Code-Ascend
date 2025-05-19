@@ -32,8 +32,8 @@ const SideBar = ({activeMenu}) => {
   return (
 
     <>
-        <div className=" w-64 h-[calc(100vh-61px)] py-10 sticky top-[75px] left-0 bg-white border border-gray-200/50 font-poppins z-20">            
-            <div className='space-y-3'>
+        <div className=" w-64 h-[calc(100vh-61px)] bg-dark-bg-secondary4 py-10 sticky top-[75px] left-0  text-white  font-poppins z-20">            
+            <div className='mt-2 px-2  space-y-3'>
                 {
                     navItems.map((item, index)=>(
                         <div
@@ -41,7 +41,7 @@ const SideBar = ({activeMenu}) => {
                             onClick={()=>handleClick(item.to)}
                             className={`flex items-center gap-4 w-full text-[15px] py-3 px-5 cursor-pointer
                                 ${activeMenu === item.label 
-                                ? "text-task_primary bg-gradient-to-r from-blue-50/40 to-blue-100/50 border-r-4 border-task_primary" 
+                                ? "text-white bg-gradient-to-r from-orange-200/40 to-orange-400/50 border-r-4 border-orange-600" 
                                 : ""}`}
                             >
                             <div className='text-xl '>{<item.Icon />}</div>

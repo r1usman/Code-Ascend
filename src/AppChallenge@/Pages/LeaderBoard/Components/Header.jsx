@@ -11,7 +11,7 @@ const Header = ({timeFilter , setTimeFilter}) => {
           <select
             value={timeFilter}
             onChange={(e) => setTimeFilter(e.target.value)}
-            className=" py-2 px-3 text-sm  border border-border_Col rounded-md bg-dark-bg-secondary3 focus:outline-none focus:ring-0 "
+            className=" py-2 px-3 text-sm  border border-border_Col rounded-[6px] bg-dark-bg-secondary3 focus:outline-none focus:ring-0 "
           >
             <option value="all-time">All Time</option>
             <option value="this-month">This Month</option>

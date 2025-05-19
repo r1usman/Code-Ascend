@@ -9,7 +9,7 @@ const LeaderBoard = ({group , activeTab}) => {
           <div className="space-y-6">
             <h2 className="text-xl font-semibold text-white">Group Leaderboard</h2>
             
-            <div className="bg-dark-800 rounded-lg overflow-hidden border border-dark-700">
+            <div className="bg-dark-800 rounded-[8px] overflow-hidden border border-dark-700">
               <div className="px-4 py-3 bg-dark-700 text-sm font-medium text-gray-400 grid grid-cols-12 gap-4">
                 <div className="col-span-1">#</div>
                 <div className="col-span-5">Member</div>

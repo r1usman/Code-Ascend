@@ -2,6 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { HomeIcon, PuzzlePieceIcon, UsersIcon, TrophyIcon, UserIcon, ArrowsRightLeftIcon } from '@heroicons/react/24/outline'
 import { LayoutDashboard } from 'lucide-react'
 
+
 const navItems = [
   { name: 'Home', to: '/dashboard', icon: HomeIcon },
   { name: 'Dashboard', to: '/appchallenge@/dashboard', icon: LayoutDashboard},
@@ -57,7 +58,7 @@ const Sidebar = ({ closeSidebar }) => {
       </div>
 
       <div className="p-4 border-t border-border_Col">
-        <div className="rounded-lg bg-[#242424] p-3">
+        <div className="rounded-[8px] bg-[#242424] p-3">
           <div className="flex items-center">
             <div className="text-emerald-500">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -72,7 +73,7 @@ const Sidebar = ({ closeSidebar }) => {
           <NavLink 
             to="/appchallenge@/problemlist"
             onClick={closeSidebar}
-            className=" mt-3 block text-center rounded-md bg-emerald-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-600 transition-colors"
+            className=" mt-3 block text-center rounded-[6px] bg-emerald-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-600 transition-colors"
           >
             Start Now
           </NavLink>

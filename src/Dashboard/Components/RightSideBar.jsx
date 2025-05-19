@@ -1,114 +1,104 @@
-// Sidebar.jsx
-import React from 'react'
-import { FiMoreVertical } from 'react-icons/fi'
-import {
-  RadialBarChart,
-  RadialBar,
-  BarChart,
-  Bar,
-  XAxis,
-  ResponsiveContainer,
-} from 'recharts'
+import React from 'react';
+import { FiMoreVertical } from 'react-icons/fi';
+import { RadialBarChart, RadialBar, BarChart, Bar, XAxis, ResponsiveContainer } from 'recharts';
+import Def from "../../assests/Default.jpg";
+import AvatarSVG from './AvatarSVG';
+import {motion} from "framer-motion"
 
-import Def from "../../assests/Default.jpg"
-import AvatarSVG from './AvatarSVG'
+import { FaCode } from 'react-icons/fa'; 
+import { LineChart } from 'recharts';  
 
-const radialData = [{ name: 'Progress', value: 32 }]
+
+const radialData = [{ name: 'Progress', value: 32 }];
 const barData = [
   { period: '1–10 Aug', value: 20 },
   { period: '11–20 Aug', value: 40 },
   { period: '21–30 Aug', value: 60 },
-]
+];
 
-const mentors = [
-  {
-    name: 'Padhang Satrio',
-    role: 'Mentor',
-    avatar: '/avatars/padhang.png',
-  },
-  {
-    name: 'Zakir Horizontal',
-    role: 'Mentor',
-    avatar: '/avatars/zakir.png',
-  },
-  {
-    name: 'Leonardo Samsul',
-    role: 'Mentor',
-    avatar: '/avatars/leonardo.png',
-  },
-]
+const progressBarTransition = (delay) => ({
+  initial: { width: 0 },
+  animate: { width: '100%' },
+  transition: { duration: 1, ease: "easeOut", delay },
+});
 
-export default function RightSideBar({changeShow}) {
+const ProgressBar = ({ label, progress, color, delay }) => (
+  <div>
+    <div className="flex  justify-between text-sm mb-1">
+      <span className="font-medium">{label}</span>
+      <span className=''>{progress}%</span>
+    </div>
+    <div className="h-2 bg-dark-bg-secondary3 rounded-full border overflow-hidden">
+      <motion.div
+        className={`h-full rounded-full ${color}`}
+        initial={{ width: 0 }}
+        animate={{ width: `${progress}%` }}
+        transition={progressBarTransition(delay)}
+      />
+    </div>
+  </div>
+);
+
+const UpcomingEvent = ({ icon, title, time, delay }) => (
+  <motion.div
+    initial={{ opacity: 0, x: -10 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.3, delay }}
+    className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg"
+  >
+    <div className={`flex items-center justify-center w-8 h-8 ${icon.bg} ${icon.text} rounded-full`} aria-label={title}>
+      {icon.component}
+    </div>
+    <div>
+      <h4 className="font-medium text-gray-800">{title}</h4>
+      <span className="text-xs text-gray-500">{time}</span>
+    </div>
+  </motion.div>
+);
+
+export default function RightSideBar({ changeShow }) {
   return (
-    <aside className="w-full h-full mt-10 bg-white rounded-2xl pt-16 shadow-md flex flex-col ">
-      {/* Header */}
-      <div className="flex flex-col  items-center justify-between">
-        <h2 className="text-lg font-semibold">Statistic</h2>
-        {/* <div  className='rounded-full p-2 ring-2 ring-red-500' >
-            <img src={Def} className='size-28 rounded-full object-cover' alt="" />
-        </div> */}
-        <AvatarSVG changeShow={changeShow}/>
-        
-      </div>
-
-      {/* Progress Circle + Greeting */}
-      <div className="flex flex-col items-center mb-6">
-       
-        <p className="mt-4 text-center font-medium">
-          Good Morning Jason <span role="img">🔥</span>
-        </p>
-        <p className="text-sm text-gray-500 text-center">
-          Continue your learning to achieve your target!
-        </p>
-      </div>
-
-      {/* Bar Chart */}
-      <div className="mb-6 flex items-center justify-center">
-        <ResponsiveContainer width="80%" height={100}>
-          <BarChart data={barData}>
-            <XAxis dataKey="period" tick={{ fontSize: 12 }} />
-            <Bar dataKey="value" radius={[4, 4, 0, 0]} fill="#7F56D9" />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-
-      {/* Mentor List */}
-      {/* <div className="flex-1 mb-4">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-semibold">Your mentor</h3>
-          <button className="text-2xl leading-none text-gray-400 hover:text-gray-600">
-            +
-          </button>
+    <aside className="w-full h-full space-y-5 text-white font-poppins mt-7 bg-dark-bg-secondary4 rounded-2xl pt-16 shadow-md flex flex-col">
+      <div className='space-y-3'>
+        {/* Header */}
+        <div className=" flex flex-col items-center gap-4 justify-between">
+          <h2 className="text-lg font-semibold">Statistic</h2>
+          <AvatarSVG changeShow={changeShow} />
         </div>
-        <ul className="space-y-3">
-          {mentors.map((m) => (
-            <li
-              key={m.name}
-              className="flex items-center justify-between bg-gray-50 p-2 rounded-lg"
-            >
-              <div className="flex items-center">
-                <img
-                  src={m.avatar}
-                  alt={m.name}
-                  className="w-8 h-8 rounded-full mr-3"
-                />
-                <div>
-                  <p className="text-sm font-medium">{m.name}</p>
-                  <p className="text-xs text-gray-500">{m.role}</p>
-                </div>
-              </div>
-              <button className="text-xs font-semibold text-indigo-600 px-3 py-1 rounded-full hover:bg-indigo-50">
-                Follow
-              </button>
-            </li>
-          ))}
-        </ul>
+
+        {/* Progress Circle + Greeting */}
+        <div className="flex flex-col items-center">
+          <p className="mt-4 text-center font-medium">
+            Good Morning Jason <span role="img">🔥</span>
+          </p>
+          <p className="text-sm text-gray-400 text-center">
+            Continue your learning to achieve your target!
+          </p>
+        </div>
+      </div>
+      
+      {/* Weekly Goal */}
+      <motion.div
+        className="card px-3 py-5 mx-3"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.5 }}
+      >
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold">Weekly Goal</h3>
+          <span className="text-accent-500 text-sm font-medium text-text_primary">3/5 days</span>
+        </div>
+
+       <div className="space-y-3 ">
+        <ProgressBar label="Study Streak" progress={60} color="bg-[#f59e0b] opacity-55" delay={0.7} />
+        <ProgressBar label="Challenges" progress={75} color="bg-[#06b6d4] opacity-55" delay={0.8} />
+        <ProgressBar label="Collaborations" progress={40} color="bg-[#9333ea] opacity-55" delay={0.9} />
       </div>
 
-      {/* See All */}
-      {/* <button className="w-full py-2 text-sm font-medium text-indigo-600 rounded-lg hover:bg-indigo-50">
-        See All
-      </button>  */}
+
+      </motion.div>
+
+  
     </aside>
-  )
+  );
 }

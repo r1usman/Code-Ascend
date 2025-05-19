@@ -4,7 +4,7 @@ import Pic from "../Utils/Frontend.png"
 
 const GroupHeader = ({group , setActiveTab,isAdmin,activeTab}) => {
   return (
-    <div className="bg-dark-bg-secondary3 font-poppins rounded-lg overflow-hidden border border-dark-700">
+    <div className="bg-dark-bg-secondary3 font-poppins rounded-[8px] overflow-hidden border border-dark-700">
         <div className="p-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>

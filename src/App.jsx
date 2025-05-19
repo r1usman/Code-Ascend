@@ -34,16 +34,23 @@ import InstructorCourses from './AppCourses/pages/InstructorCourses.jsx';
 import StudentCourseDetailPage from './AppCourses/pages/StudentCourseDetails.jsx';
 import StudentCourses from './AppCourses/pages/StudentCourses.jsx';
 import VirtualLearningInterface from './AppLiveClass/VirtualLearningInterface.jsx';
+import CodeingEnvironment from './AppEditor/CodeingEnvironment.jsx';
+import EditorLayout from './AppEditor/Layouts/EditorLayout.jsx'
+import "..//src/index.css"
+import {RightBarProvider , RightBarContextApi} from "./Dashboard/ContextApi/DisplayContextApi.jsx"
 
 function App() {
   // const { user } = useContext(CollabContext);
   return (
     <RoleProvider>
-      <Router>
+      <RightBarProvider>
+         <Router>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/SignUp" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          
+          
           <Route path="/appchallenge" element={<AppChallenge />} />
 
           <Route path="/appchallenge@" element={<AppChallengeAt />}>
@@ -78,9 +85,20 @@ function App() {
               element={<StudentCourseDetailPage />}
             />
             <Route path="class-live" element={<VirtualLearningInterface />} />
+
           </Route>
+          <Route path="/appeditor" element={<EditorLayout />} >
+            <Route index element={<Navigate to='editor' replace />}/>
+            <Route path='editor' element={<CodeingEnvironment/>}/>
+            <Route path="*" element={<Nopage />} />
+          </Route>
+
+
         </Routes>
       </Router>
+      </RightBarProvider>
+      
+     
     </RoleProvider>
   );
 }

@@ -33,7 +33,7 @@ const UserStats = () => {
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {stats.map((stat, idx) => (
 
-        <div className="bg-dark-bg-secondary3 rounded-lg border border-border_Col p-5">
+        <div className="bg-dark-bg-secondary3 rounded-[8px] border border-border_Col p-5">
         <p className="text-gray-400 mb-1 text-sm">{stat.label}</p>
         <div className="flex items-baseline">
             <span className={`text-2xl font-bold ${stat.valueColor}`}>{stat.value}</span>

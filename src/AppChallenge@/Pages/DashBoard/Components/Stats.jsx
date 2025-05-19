@@ -6,10 +6,10 @@ const Stats = ({statsData}) => {
         {statsData.map((stat, index) => (
           <div
             key={index}
-            className=" p-6 rounded-md bg-dark-bg-secondary3 hover:translate-y-[-5px] transition-transform duration-200 ease-in-out"
+            className=" p-6 rounded-[6px]  bg-dark-bg-secondary3 hover:translate-y-[-5px] transition-transform duration-200 ease-in-out"
           >
             <div className="flex items-center">
-              <div className={`${stat.bgColor}  p-3 rounded-lg`}>
+              <div className={`${stat.bgColor}  p-3 rounded-[6px]`}>
                 {stat.icon}
               </div>
               <div className="ml-4">
