@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Clock, 
@@ -13,10 +13,11 @@ import { StatsCard } from './StatsCard';
 import { ChallengesCard } from './ChallengesCard';
 import { AdminStats } from './AdminStats';
 import {RightBarContextApi} from "../ContextApi/DisplayContextApi"
+import { use } from 'react';
 
 export const UserStats = () => {
   const [isAdmin, setIsAdmin ,] = useState(false);
-  const {setDisplayRightBar, setisAdmin} = useContext(RightBarContextApi)
+  const {setDisplayRightBar,DisplayRightBar} = useContext(RightBarContextApi)
   
   const userData = {
     name: 'Jason',
@@ -54,10 +55,27 @@ export const UserStats = () => {
     },
   ];
   const shiftToAdmin = (isAdmin)=>{
+    console.log("Here");
+    
     setIsAdmin(!isAdmin)
-    setDisplayRightBar((prev)=>!prev)
-    setisAdmin(!isAdmin)
+    setDisplayRightBar(isAdmin)
   }
+
+  console.log("Here", isAdmin);
+  console.log("DisplayRightBar" , DisplayRightBar);
+
+
+  useEffect(()=>{
+    if(isAdmin == false && DisplayRightBar == false )
+    {
+      setDisplayRightBar(true)
+    }
+  })
+  
+  
+  
+
+    
   return (
     <div className="space-y-6 text-white">
       <motion.div 
@@ -69,7 +87,7 @@ export const UserStats = () => {
         <h1 className="text-2xl font-bold ">Dashboard</h1>
         <button
           onClick={() => shiftToAdmin(isAdmin)}
-          className="Btn1 flex items-center gap-2 px-4 py-2 bg-primary-50 text-primary-600 rounded-lg hover:bg-primary-100 transition-colors"
+          className="Btn1 flex items-center   gap-2 px-4 py-2 bg-primary-50 text-primary-600 rounded-lg hover:bg-primary-100 transition-colors"
         >
           <LayoutDashboard size={18} />
           <span>{isAdmin ? 'User View' : 'Admin View'}</span>

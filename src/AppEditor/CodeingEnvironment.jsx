@@ -9,7 +9,7 @@ const CodeingEnvironment = () => {
   const [problem, setproblem] = useState(null)
  return (
     <>
-        <div className="min-h-screen bg-dark-bg-secondary4 rounded-md   text-white p-4 md:p-8">
+        <div className="min-h-screen bg-dark-bg-secondary4 rounded-[6px]   text-white p-4 md:p-8">
         <header className="max-w-6xl mx-auto mb-6 s">
           <h1 className="text-2xl md:text-2xl font-bold text-white flex items-center gap-2">
             <span className="text-blue-500">{'</>'}</span> CodeEditor

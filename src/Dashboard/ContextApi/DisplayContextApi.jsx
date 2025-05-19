@@ -5,9 +5,9 @@ export const RightBarContextApi = createContext()
 
 export const RightBarProvider = ({ children }) => {
     const [DisplayRightBar, setDisplayRightBar] = useState(true)
-    const [isAdmin, setisAdmin] = useState(false)
+    const [Admin, setAdmin] = useState(false)
     return (
-        <RightBarContextApi.Provider value={{ DisplayRightBar, setDisplayRightBar, isAdmin,setisAdmin }}>
+        <RightBarContextApi.Provider value={{ DisplayRightBar, setDisplayRightBar, Admin,setAdmin }}>
             {children}
         </RightBarContextApi.Provider>
 

@@ -7,14 +7,8 @@ import { useLocation } from 'react-router-dom';
 
 const DashboardLayout = ({ children, activeMenu, changeShow }) => {
   const User = true; 
-  const { DisplayRightBar, setDisplayRightBar ,isAdmin } = useContext(RightBarContextApi);
-  useEffect(()=>{
-    if(isAdmin == true )
-    {
-      setDisplayRightBar(true)
-    }
-
-  },[isAdmin])
+  const { DisplayRightBar, setDisplayRightBar} = useContext(RightBarContextApi);
+ 
   
   
 

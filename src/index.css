@@ -59,7 +59,7 @@
 }
 
 .Btn1 {
-  @apply flex items-center gap-2 bg-emerald-600 rounded-[6px] text-white px-4 py-2 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2
+  @apply flex items-center gap-2 bg-emerald-600 rounded-[6px] text-white px-4 py-2 font-medium transition-all duration-200 focus:outline-none focus:ring-0 focus:ring-offset-0
 }
 
 
