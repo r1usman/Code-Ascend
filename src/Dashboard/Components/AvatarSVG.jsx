@@ -46,7 +46,7 @@ export default function AvatarSVG({
           cx={size/2}
           cy={size/2}
           r={radius}
-          stroke="#ef4444"
+          stroke="#ef4407"
           strokeWidth={stroke}
           fill="none"
           strokeDasharray={circumference}
@@ -67,7 +67,7 @@ export default function AvatarSVG({
           transform: 'translate(-50%, -50%)',
         }}
       />
-      <div className='absolute space-x-1 text-sm px-1 rounded-xl top-3 -right-4 bg-red-400'>
+      <div className='absolute space-x-1 text-sm px-1 rounded-xl top-3 -right-4 bg-text_primary'>
         <span>{progress}</span>
         <span>%</span>
       </div>

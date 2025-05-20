@@ -108,7 +108,7 @@ const Login = () => {
                 <p className='text-xs font-semibold'>Please enter your details to log in</p>
               </div>
               <form className='flex flex-col gap-2'>
-                <div className='flex flex-col space-y-2'>
+                <div className='flex flex-col space-y-2 '>
                   <label htmlFor='' className='font-semibold'>
                     Email
                   </label>

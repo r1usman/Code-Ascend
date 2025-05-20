@@ -14,7 +14,7 @@ function ProblemCategories() {
   return (
     // Added relative positioning for the absolute expand/collapse button
     // Added background color and padding
-    <div className="mb-6 rounded-lg shadow-md  p-2 relative">
+    <div className="mb-6 rounded-[6px] shadow-md  p-2 relative">
       {/* Categories List Container */}
       {/* Added overflow-hidden and max-h for single line effect when collapsed */}
       {/* Removed flex-wrap when collapsed, added when expanded */}
@@ -44,7 +44,7 @@ function ProblemCategories() {
             onClick={() => setIsCategoriesExpanded(!isCategoriesExpanded)}
             className={`${
               !isCategoriesExpanded ? "-translate-y-0.5 " : "bottom-2  "
-            } absolute right-2 z-10 px-4 py-2 text-sm font-medium  bg-white text-btn-txt  rounded-md  focus:outline-none transition duration-200 ease-in-out 
+            } absolute right-2 z-10 px-4 py-2 text-sm font-medium  bg-white text-btn-txt  rounded-[6px]  focus:outline-none transition duration-200 ease-in-out 
            
           `}
           >

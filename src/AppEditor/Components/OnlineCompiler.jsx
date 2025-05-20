@@ -67,7 +67,7 @@ const OnlineCompiler = () => {
 
   return (
     <>
-        <div className="border-2 border-border_Col bg-dark-bg-secondary3 rounded-lg shadow-xl overflow-hidden transition-all">
+        <div className="border-2 border-border_Col bg-dark-bg-secondary3 rounded-[8px] shadow-xl overflow-hidden transition-all">
       <div className="border-b  border-border_Col p-4 flex flex-wrap items-center gap-4">
         <LanguageSelector 
           selectedLanguageId={languageId} 
@@ -79,7 +79,7 @@ const OnlineCompiler = () => {
             onClick={handleRunClick}
             disabled={isRunning }
             className={`
-                flex items-center gap-2  focus:outline-none focus:ring-0 px-4 py-2 rounded-md font-medium transition-all
+                flex items-center gap-2  focus:outline-none focus:ring-0 px-4 py-2 rounded-[6px] font-medium transition-all
               ${isRunning ? 'bg-slate-700 text-slate-400 cursor-not-allowed' : 
                 status === 'success' ? 'bg-green-600 hover:bg-green-700 text-white' :
                 status === 'error' ? 'bg-red-600 hover:bg-red-700 text-white' :

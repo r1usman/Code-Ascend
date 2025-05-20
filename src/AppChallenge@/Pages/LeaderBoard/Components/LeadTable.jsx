@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const LeadTable = ({displayLeaderboard , page , setPage , pageSize, globalLeaderboard}) => {
   return (
-     <div className=" rounded-lg border border-border_Col overflow-hidden">
+     <div className=" rounded-[8px] border border-border_Col overflow-hidden">
         <div className="px-4 py-3 bg-dark-bg-secondary1 grid grid-cols-12 gap-2 text-xs font-medium text-gray-400">
           <div className="col-span-1">Rank</div>
           <div className="col-span-5">User</div>
@@ -82,7 +82,7 @@ const LeadTable = ({displayLeaderboard , page , setPage , pageSize, globalLeader
                 <button
                   key={i}
                   onClick={() => setPage(pageNum)}
-                  className={`h-8 w-8 rounded-md flex items-center justify-center text-sm ${page === pageNum
+                  className={`h-8 w-8 rounded-[6px] flex items-center justify-center text-sm ${page === pageNum
                     ? 'bg-primary-500 text-white'
                     : 'hover:bg-dark-600 text-gray-400'
                     }`}
@@ -96,7 +96,7 @@ const LeadTable = ({displayLeaderboard , page , setPage , pageSize, globalLeader
                 <span className="text-gray-500">...</span>
                 <button
                   onClick={() => setPage(Math.ceil(globalLeaderboard.length / pageSize))}
-                  className="h-8 w-8 rounded-md flex items-center justify-center text-sm hover:bg-dark-600 text-gray-400"
+                  className="h-8 w-8 rounded-[6px] flex items-center justify-center text-sm hover:bg-dark-600 text-gray-400"
                 >
                   {Math.ceil(globalLeaderboard.length / pageSize)}
                 </button>

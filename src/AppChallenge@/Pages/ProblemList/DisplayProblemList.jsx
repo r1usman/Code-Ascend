@@ -63,7 +63,7 @@ function DisplayProblemList() {
 
   return (
     // Applied dark mode classes directly
-    <div className="min-h-screen bg-dark-bg-secondary4 rounded-md font-poppins text-gray-100 transition-colors duration-300 max-w-5xl mx-auto  \">
+    <div className="min-h-screen bg-dark-bg-secondary4 rounded-[6px] font-poppins text-gray-100 transition-colors duration-300 max-w-5xl mx-auto  \">
       {/* Main Content Area */}
       <main className="flex-1 p-6 w-full">
         <div className="flex justify-between items-center mb-6">
@@ -74,7 +74,7 @@ function DisplayProblemList() {
 
         {/* Course Carousel Section */}
         {/* Added 'relative group' for hover effect on arrows */}
-        <div className="mb-6 rounded-lg shadow-md relative group">
+        <div className="mb-6 rounded-[8px] shadow-md relative group">
           {" "}
           {/* Removed p-6, bg-white, dark:bg-gray-800 */}
           {/* Carousel component from react-responsive-carousel */}
@@ -83,7 +83,7 @@ function DisplayProblemList() {
               <div key={index} className="px-2">
                 {" "}
                 {/* Added horizontal padding for spacing between slides */}
-                <div className="rounded-lg overflow-hidden shadow-md cursor-pointer hover:shadow-lg transition duration-200 ease-in-out">
+                <div className="rounded-[8px] overflow-hidden shadow-md cursor-pointer hover:shadow-lg transition duration-200 ease-in-out">
                   <img
                     src={course.imageUrl}
                     alt={course.name}
@@ -104,7 +104,7 @@ function DisplayProblemList() {
         <ProblemCategories />
         {/* Problem Table/List */}
         {/* Applied dark mode background and text colors directly */}
-        <div className=" text-gray-100 shadow-md rounded-lg overflow-hidden ">
+        <div className=" text-gray-100 shadow-md rounded-8px overflow-hidden ">
           <ProblemList />
         </div>
       </main>

@@ -3,7 +3,7 @@ import {motion} from "framer-motion"
 import { Link } from 'react-router-dom'
 const GroupLeaderBoard = ({group}) => {
     return (
-    <div className="rounded-lg overflow-hidden border border-dark-700">
+    <div className="rounded-[8px] overflow-hidden border border-dark-700">
         <div className="px-4 py-3 bg-dark-700 text-sm font-medium text-gray-400 grid grid-cols-12 gap-4">
             <div className="col-span-6">Challenge</div>
             <div className="col-span-2">Difficulty</div>

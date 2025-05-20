@@ -59,12 +59,16 @@
 }
 
 .Btn1 {
-  @apply flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2
+  @apply flex items-center gap-2 bg-emerald-600 rounded-[6px] text-white px-4 py-2 font-medium transition-all duration-200 focus:outline-none focus:ring-0 focus:ring-offset-0
 }
 
 
 .card {
-  @apply bg-dark-bg-secondary3 border-border_Col rounded-xl shadow-lg overflow-hidden border transition-all duration-300;
+  @apply bg-dark-bg-secondary3 border-border_Col rounded-[12px] shadow-lg overflow-hidden border transition-all duration-300;
+}
+
+.Admcard {
+  @apply border-border_Col rounded-[12px] shadow-lg overflow-hidden border transition-all duration-300;
 }
 
 .card-hover {
