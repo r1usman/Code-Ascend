@@ -504,10 +504,13 @@ const CourseCard = ({ course }) => {
         <div className="mb-3 mt-auto text-lg font-bold text-text_primary">
           ${price}
         </div>
-        <button className="flex w-full items-center justify-center rounded-md bg-text_primary px-4 py-2.5 font-poppins text-sm font-semibold text-dark-bg-primary shadow-md transition-all duration-300 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">
+        <Link
+          to={`/instructor-manage`}
+          className="flex w-full items-center justify-center rounded-md bg-text_primary px-4 py-2.5 font-poppins text-sm font-semibold text-dark-bg-primary shadow-md transition-all duration-300 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75"
+        >
           <Edit3 className="mr-2 h-4 w-4" />
           Manage Course
-        </button>
+        </Link>
       </div>
     </div>
   );

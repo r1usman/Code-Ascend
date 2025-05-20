@@ -16,6 +16,7 @@ const Header = () => {
         </div>
         <nav className="flex items-center space-x-4 sm:space-x-6">
           <Link
+            to={`/${isStudent ? 'student' : 'instructor'}-courses`}
             onClick={toggleView}
             className="hidden font-poppins text-sm transition-colors duration-300 hover:text-text_primary sm:block"
           >
