@@ -16,6 +16,7 @@ import {
   Filter,
 } from 'lucide-react';
 import Header from '../components/Header';
+import { Link } from 'react-router-dom';
 
 // Dummy Data for Enrolled Courses
 const enrolledCoursesData = [
@@ -117,7 +118,8 @@ const Button = ({
   const iconSizeStyle = size === 'sm' ? 'w-3.5 h-3.5' : 'w-4 h-4';
 
   return (
-    <button
+    <Link
+      to={'/student-manage'} // Example link, adjust as needed
       className={`${baseStyle} ${variantStyle} ${sizeStyle} ${className}`}
       {...props}
     >
@@ -130,7 +132,7 @@ const Button = ({
         React.cloneElement(iconRight, {
           className: `${iconSizeStyle} ${children ? 'ml-2' : ''}`,
         })}
-    </button>
+    </Link>
   );
 };
 // --- End Shadcn-UI like conceptual components ---
