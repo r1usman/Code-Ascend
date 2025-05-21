@@ -247,7 +247,7 @@ const AvatarFallback = ({ children, className = '' }) => (
 );
 
 // Main Course Management Page Component
-const CourseManagementPage = () => {
+const ManageInstructor = () => {
   const [course, setCourse] = useState(courseDetailsData);
   const [studentRequests, setStudentRequests] = useState(studentRequestsData);
   const [assessments, setAssessments] = useState(assessmentHistoryData);
@@ -619,4 +619,4 @@ const CourseManagementPage = () => {
   );
 };
 
-export default CourseManagementPage;
+export default ManageInstructor;

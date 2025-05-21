@@ -19,7 +19,7 @@ import { useRole } from '../context/CoursesContext';
 import { Link } from 'react-router-dom';
 
 // Dummy Course Data (representing instructor's courses) - REMAINS THE SAME
-const coursesData = [
+const coursesData = [ 
   {
     id: 1,
     title: 'Advanced Algorithms & Data Structures',
