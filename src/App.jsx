@@ -41,6 +41,7 @@ import {
   RightBarProvider,
   RightBarContextApi,
 } from './Dashboard/ContextApi/DisplayContextApi.jsx';
+import ProfilePage from './profile/ProfilePage.jsx';
 
 function App() {
   // const { user } = useContext(CollabContext);
@@ -94,6 +95,7 @@ function App() {
               element={<StudentCourseDetailPage />}
             />
             <Route path="class-live" element={<VirtualLearningInterface />} />
+            <Route path="edit-profile" element={<ProfilePage />} />
           </Routes>
         </Router>
       </RightBarProvider>
