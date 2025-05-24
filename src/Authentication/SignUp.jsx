@@ -1,12 +1,13 @@
 import React, {  useEffect, useState } from 'react';
 import { Eye, EyeOff, LogIn, Upload } from 'lucide-react';
 import { validateEmail } from './AuthAssest/valideEmail';
-// import axios from 'axios';
+import axios from 'axios';
 import {useNavigate} from "react-router-dom"
 import PhotoSelector from './Components/PhotoSelector';
 import CustomDiv from './Components/RightBar.jsx/CustomDiv';
 import PasswordStrength from './Components/PasswordStrength';
-// import UploadImage from './components/UploadImage';
+import UploadImage from './Components/UploadImage';
+import { isExists, set } from 'date-fns';
 
 const SignUp = () => {
   const [email, setemail] = useState('');
@@ -24,49 +25,47 @@ const SignUp = () => {
   
   const navigate = useNavigate();
 
-    // const sendData = async()=>{
-    //   try {
-    //     const uploadImage = await UploadImage(ProfilePic);
+    const sendData = async()=>{
+      try {
+        const uploadImage = await UploadImage(ProfilePic);
       
       
-    //     const profileImageUrl = uploadImage.Image || "";
+        const profileImageUrl = uploadImage.Image || "";
 
-    //     console.log("image", profileImageUrl);
+        console.log("image", profileImageUrl);
+
+        const response = await axios.post("http://localhost:3000/api/Auth/VerifyEmail",{  email })
+        console.log(response.data.isExist);
+
+        if(response.data.isExist == false)
+        {
+            navigate("/otp", {
+              state: {
+                name,
+                email,
+                password,
+                profileImageUrl
+              }
+          });
+        }
+        
         
 
-    //     const response = await axios.post("http://localhost:3000/api/auth/register",{
-    //       name,
-    //       email,
-    //       password,
-    //       profileImageUrl,
-    //       adminInviteToken:adminToken
-    //     })
-    //     console.log(response);
-        
-    //     console.log(response.data.Message);
-    //     const User = response.data.User
-    //     console.log(User);
-    //     if(User.role=="member")
-    //     {
-    //       navigate("/user/dashboard")
-    //     }
-    //     else
-    //     {
-    //       navigate("/admin/dashboard")
-    //     }
-      
-    //   } catch (error) {
-    //     console.log(error);
-    //     console.log(error.response.data.Message);
-    //     seterror(error.response.data.Message)
+      //
+
+        //
+      } catch (error) {
+        console.log("Error",error);
+        console.log(error.response.data.Message);
+        seterror(error.response.data.Message)
         
         
-    //   }
+      }
       
       
       
       
-    // }
+    }
 
   const handelRequest = async (e) => {
     e.preventDefault();
@@ -103,11 +102,17 @@ const SignUp = () => {
         seterror("Strong Password is Required")
         return;
       }
+      if(!ProfilePic)
+      {
+        seterror("Image is Not Selected")
+        return;
+
+      }
+     
       
     
     seterror("")
-    navigate("/dashboard")
-    // sendData()
+    sendData()
 
   };
   useEffect(()=>{
@@ -120,6 +125,9 @@ const SignUp = () => {
     e.preventDefault(); 
     sethide((prev) => !prev);
   };
+
+  // console.log(ProfilePic , "ProfilePic");
+  
 
   return (
     <>
@@ -141,7 +149,7 @@ const SignUp = () => {
                         Full Name
                       </label>
                       <input
-                        className=' p-2 bg-slate-100 focus:outline-none text-slate-700 border border-slate-200 rounded-sm placeholder:text-slate-700'
+                        className=' p-2 bg-slate-100 focus:outline-none text-slate-700 border border-slate-200 rounded-[4px] placeholder:text-slate-700'
                         type='text'
                         value={name}
                         placeholder='John'
@@ -153,7 +161,7 @@ const SignUp = () => {
                         Email
                       </label>
                       <input
-                        className='w-full p-2 bg-slate-100 focus:outline-none text-slate-700 border border-slate-200 rounded-sm placeholder:text-slate-700'
+                        className='w-full p-2 bg-slate-100 focus:outline-none text-slate-700 border border-slate-200 rounded-[4px] placeholder:text-slate-700'
                         type='text'
                         value={email}
                         placeholder='john@gmail.com'
@@ -164,13 +172,13 @@ const SignUp = () => {
                   </div>
                   <div className='flex gap-5 items-center w-full  px-5'>
                     
-                     <PasswordStrength  password={password} setpassword={setpassword} hide={hide} ToggleHide={ToggleHide} setPassStatus={setPassStatus}/>
+                     <PasswordStrength  password={password} placeholder={"Password"} setpassword={setpassword} hide={hide} ToggleHide={ToggleHide} setPassStatus={setPassStatus}/>
                     <div className='flex flex-col w-full space-y-2   min-h-[104px]'>
                         <label htmlFor='' className='font-semibold'>
                           Confirm Password
                         </label>
                         <input
-                          className='w-full p-2 bg-slate-100 focus:outline-none text-slate-700 border border-slate-200 rounded-sm placeholder:text-slate-700'
+                          className='w-full p-2 bg-slate-100 focus:outline-none text-slate-700 border border-slate-200 rounded-[4px] placeholder:text-slate-700'
                           type='text'
                           value={ConfirmPass}
                           placeholder='Confirm Password'
@@ -181,7 +189,7 @@ const SignUp = () => {
                   </div>
                 </div>
                
-                <button className='focus:outline-none ring-0 hover:bg-text_primary hover:opacity-75  transition-all ease-in duration-150 bg-text_primary py-2 mx-4 text-white uppercase tracking-wider rounded-sm font-semibold text-sm' onClick={handelRequest}>Sign UP</button>
+                <button className='focus:outline-none ring-0 hover:bg-text_primary hover:opacity-75  transition-all ease-in duration-150 bg-text_primary py-2 mx-4 text-white uppercase tracking-wider rounded-[4px] font-semibold text-sm' onClick={handelRequest}>Sign UP</button>
               </form>
               <p className='text-xs text-red-600 px-5  '>{error}</p>
 

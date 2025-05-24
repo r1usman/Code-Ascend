@@ -1,7 +1,7 @@
 import { Bell, Eye, EyeOff, Lightbulb } from 'lucide-react'
 import React, { useState } from 'react'
 
-const PasswordStrength = ({password , setpassword , ToggleHide ,hide ,setPassStatus}) => {
+const PasswordStrength = ({password , placeholder, setpassword , ToggleHide ,hide ,setPassStatus}) => {
 
     const [Message, setMessage] = useState("")
     const [Progress, setProgress] = useState("")
@@ -64,10 +64,10 @@ const PasswordStrength = ({password , setpassword , ToggleHide ,hide ,setPassSta
         <div className='relative w-full  flex items-center'>
             <div className='relative w-full  flex items-center'>
                 <input
-                className='w-full p-2 pr-10 bg-slate-100 focus:outline-none text-slate-700 border border-slate-200 rounded-sm placeholder:text-slate-700'
+                className='w-full p-2 pr-10 bg-slate-100 focus:outline-none text-slate-700 border border-slate-200 rounded-[4px] placeholder:text-slate-700'
                 type={hide ? 'password' : 'text'}
                 value={password}
-                placeholder='Password'
+                placeholder={placeholder}
                 onChange={handleChanges}
                 />
                 <div

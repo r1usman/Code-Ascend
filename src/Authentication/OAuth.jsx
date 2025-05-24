@@ -31,10 +31,10 @@ export default function OAuth() {
   return (
     <button
       onClick={handleGoogleClick}
-      type="button"
-      className="rounded-lg bg-red-700 p-3 uppercase text-white hover:opacity-95"
+      type="button "
+      className="rounded-[4px] w-full text-sm bg-red-700 py-2 font-poppins uppercase text-white hover:opacity-95 "
     >
       Continue with google
-    </button>
+    </button >
   );
 }

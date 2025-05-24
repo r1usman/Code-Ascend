@@ -1,37 +1,31 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
+
 import { validateEmail } from './AuthAssest/valideEmail';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import BoxAnimation from '../assests/Animation/BoxAnimation';
 import CustomDiv from './Components/RightBar.jsx/CustomDiv';
-import OAuth from './OAuth';
+
 import { UserContext } from '../GlobalContextApi/User';
-const Login = () => {
+import { set } from 'date-fns';
+const ForgetPassword = () => {
   const [email, setemail] = useState('');
-  const [password, setpassword] = useState('');
   const [error, seterror] = useState('');
-  const [hide, sethide] = useState(true); // State to toggle password visibility
+  const [User, setUser] = useState(null)
+
   const navigate = useNavigate();
 
   const sendData = async()=>{
     try {
 
       const result = await axios.post(
-        "http://localhost:3000/api/Auth/login",
-        { email, password },
+        "http://localhost:3000/api/Auth/ForgetPassword",
+        { email },
         { withCredentials: true }
     );
-      console.log("result", result);
-
-      const User = result.data.user;
-      const Token = result.data.token;
-      // updateUser(User, Token)
-      console.log(User);
-      if(User)
-        navigate("/dashboard")
-
-      console.log("Authorized");
+      console.log("result", result.data);
+      seterror(result.data.message)
+      setUser(result.data.user)
 
     } catch (error) {
       if (error.response) {
@@ -58,24 +52,27 @@ const Login = () => {
       seterror('Please Enter valid email');
       return;
     }
-    if (!password) {
-      seterror('Please Enter the Password');
-      return;
-    }
+    
     seterror('');
     sendData()
+    
   };
 
   useEffect(() => {
+    if(User)
+    {
+        setTimeout(() => {
+        seterror('');
+      }, 10000);
+    }
     setTimeout(() => {
       seterror('');
     }, 5000);
+    
   }, [error]);
 
-  const ToggleHide = (e) => {
-    e.preventDefault();
-    sethide((prev) => !prev);
-  };
+ 
+
 
   return (
     <>
@@ -85,13 +82,14 @@ const Login = () => {
             <BoxAnimation />
           </div>
 
-          <h1 className="text-2xl font-semibold">Code Ascend</h1>
+         
           <div className="relative z-20 flex h-full flex-col  justify-center">
-            <div className="flex flex-col gap-5">
+             <h1 className="text-2xl font-semibold mb-10">Code Ascend</h1>
+            <div className="flex flex-col gap-4">
               <div className="space-y-1">
-                <h1 className="text-2xl font-semibold">Welcome Back</h1>
+                <h1 className="text-2xl font-semibold">Forgot Your Password?</h1>
                 <p className="text-xs font-semibold">
-                  Please enter your details to log in
+                  Please enter your email address below to receive a password reset link.
                 </p>
               </div>
               <form  className="flex flex-col gap-2">
@@ -107,56 +105,27 @@ const Login = () => {
                     onChange={(e) => setemail(e.target.value)}
                   />
                 </div>
-                <div>
-                  <label className="font-semibold">Password</label>
-                  <div className="relative flex w-[60%] items-center">
-                    <input
-                      className="w-full  rounded-[4px] border border-slate-200 bg-slate-100 p-2 pr-10 text-slate-700 placeholder:text-slate-700 focus:outline-none"
-                      type={hide ? 'password' : 'text'} 
-                      value={password}
-                      placeholder="Password"
-                      onChange={(e) => setpassword(e.target.value)}
-                    />
-                    <button
-                      onClick={ToggleHide}
-                      className="absolute right-2 text-text_primary top-1/2 -translate-y-1/2"
-                    >
-                      {hide ? (
-                        <EyeOff className="text-Pro5-primary" />
-                      ) : (
-                        <Eye className="text-Pro5-primary" />
-                      )}
-                    </button>
-                  </div>
-                </div>
-                <p className="text-xs text-red-600">{error}</p>
+               
+               
                 <button
                   className="w-[60%] rounded-[4px] bg-text_primary py-2 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-150 ease-in hover:bg-text_primary hover:opacity-70"
                   onClick={handelRequest}
                 >
-                  Login
+                  Send Email
                 </button>
               </form>
-              <div className='w-[60%]'><OAuth /></div>
-              <div className='flex items-center gap-40'>
+              <p className={`text-xs ${User ?"text-green-500":"text-red-600"}`}>{error}</p>
+            
                 <p className="text-xs">
-                Don't have an account?{' '}
+                
                 <span
                   className="text-task_primary cursor-pointer underline"
-                  onClick={() => navigate('/SignUp')}
+                  onClick={() => navigate('/')}
                 >
-                  Sign Up
+                  Back to Login 
                 </span>
               </p>
-              <p className="text-xs">
-                <span
-                  className="text-task_primary cursor-pointer underline"
-                  onClick={() => navigate('/ForgetPassword')}
-                >
-                  Forget Password
-                </span>
-              </p>
-              </div>
+
             </div>
           </div>
         </div>
@@ -171,4 +140,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgetPassword;

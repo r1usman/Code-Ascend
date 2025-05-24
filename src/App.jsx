@@ -41,6 +41,10 @@ import {
   RightBarProvider,
   RightBarContextApi,
 } from './Dashboard/ContextApi/DisplayContextApi.jsx';
+import ForgetPassword from './Authentication/ForgetPassword.jsx';
+import OtpVerification from './Authentication/Components/OtpVerification.jsx';
+import OTP from './Authentication/OTP.jsx';
+import ChangePassword from './Authentication/ChangePassword.jsx';
 
 function App() {
   // const { user } = useContext(CollabContext);
@@ -51,6 +55,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/SignUp" element={<Signup />} />
+            <Route path="/ForgetPassword" element={<ForgetPassword />} />
+            <Route path="/otp" element={<OTP />} />
+            <Route path="/ChangePassword" element={<ChangePassword />} />
             <Route path="/dashboard" element={<Dashboard />} />
 
             <Route path="/appchallenge" element={<AppChallenge />} />
