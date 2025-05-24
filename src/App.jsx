@@ -45,6 +45,7 @@ import ForgetPassword from './Authentication/ForgetPassword.jsx';
 import OtpVerification from './Authentication/Components/OtpVerification.jsx';
 import OTP from './Authentication/OTP.jsx';
 import ChangePassword from './Authentication/ChangePassword.jsx';
+import ProfilePage from './profile/ProfilePage.jsx';
 
 function App() {
   // const { user } = useContext(CollabContext);
@@ -101,6 +102,7 @@ function App() {
               element={<StudentCourseDetailPage />}
             />
             <Route path="class-live" element={<VirtualLearningInterface />} />
+            <Route path="edit-profile" element={<ProfilePage />} />
           </Routes>
         </Router>
       </RightBarProvider>
