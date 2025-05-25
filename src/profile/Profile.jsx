@@ -1,15 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { UserContext, useUser } from '../GlobalContextApi/User';
+import UploadImage from '../Authentication/Components/UploadImage';
+import axios from 'axios';
 // import { Link } from "react-router-dom"; // Link is imported but not used in this component.
-import {
-  deleteUserFailure,
-  deleteUserStart,
-  deleteUserSuccess,
-  signOutUserStart,
-  updateUserFailure,
-  updateUserStart,
-  updateUserSuccess,
-} from '../redux/user/userSlice'; // Assuming this path is correct
 
 // Placeholder for an icon, e.g., from lucide-react or heroicons
 const CameraIcon = () => (
@@ -32,129 +25,105 @@ const CameraIcon = () => (
 
 export default function Profile() {
   const fileRef = useRef(null);
-  const { currentUser, loading, error } = useSelector((state) => state.user);
+
+  const User = useUser();
+
+  //   const { currentUser, loading, error } = useSelector((state) => state.user);
   const [file, setFile] = useState(undefined);
   const [filePerc, setFilePerc] = useState(0); // For upload progress, if you implement it
   const [uploading, setUploading] = useState(false); // To show uploading state
   const [fileUploadError, setFileUploadError] = useState(null); // Changed to null initial state
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
-  const [showListingsError, setShowListingsError] = useState(false);
-  const [userListings, setUserListings] = useState([]);
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (file) {
-      handleFileUpload(file);
-    }
-  }, [file]);
-
-  const handleFileUpload = async (file) => {
-    setUploading(true);
-    setFileUploadError(null); // Reset error on new upload
-    // Simulate upload progress for demo
-    // In a real app, use Firebase storage or similar to get actual progress
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += 10;
-      setFilePerc(progress);
-      if (progress >= 100) {
-        clearInterval(interval);
-        setUploading(false);
-        // Simulate success or error
-        const isSuccess = Math.random() > 0.2; // 80% chance of success
-        if (isSuccess) {
-          // Assuming the upload returns a URL for the avatar
-          const newAvatarUrl = URL.createObjectURL(file); // Placeholder for actual URL
-          setFormData({ ...formData, avatar: newAvatarUrl });
-          setFileUploadError(null);
-        } else {
-          setFileUploadError('Image upload failed (max 2MB, type image).');
-          setFile(undefined); // Clear the file if upload failed
-        }
-        setFilePerc(0); // Reset progress
+    async function Uploadasync() {
+      if (file) {
+        const abc = await UploadImage(file);
+        console.log('File upload completed:', abc.Image);
+        setFormData({
+          ...formData,
+          profileImage: abc.Image || '',
+        });
       }
-    }, 200);
-  };
-
+    }
+    Uploadasync();
+  }, [file]);
+  if (!User) return null;
+  const { User: currentUser, loading, error } = User;
   const handleChange = (e) => {
-    setUpdateSuccess(false); // Clear success message on new change
+    setUpdateSuccess(false);
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(formData).length === 0 && !file) {
-      // If neither form data nor file has changed, don't submit
-      // You might want to show a message here
       return;
     }
     try {
-      dispatch(updateUserStart());
-      const res = await fetch(`/api/user/update/${currentUser._id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      console.log('Submitting form data:', formData);
+      //   dispatch(updateUserStart());
+      const res = await fetch(
+        `http://localhost:3000/api/Auth/update/${currentUser._id}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await res.json();
       if (data.success === false) {
-        dispatch(updateUserFailure(data.message));
+        // dispatch(updateUserFailure(data.message));
         setUpdateSuccess(false);
         return;
       }
-      dispatch(updateUserSuccess(data));
+      //   dispatch(updateUserSuccess(data));
       setUpdateSuccess(true);
-      setFile(undefined); // Clear file after successful update if it was part of formData
-      // No need to clear formData if it's reflecting Redux state,
-      // but if it's local, you might clear it or parts of it.
+      setFile(undefined);
     } catch (err) {
-      dispatch(updateUserFailure(err.message));
+      //   dispatch(updateUserFailure(err.message));
       setUpdateSuccess(false);
     }
   };
 
   const handleDeleteUser = async () => {
-    // Add a confirmation dialog here in a real app
-    // e.g., if (!window.confirm("Are you sure you want to delete your account?")) return;
     try {
-      dispatch(deleteUserStart());
+      //   dispatch(deleteUserStart());
       const res = await fetch(`/api/user/delete/${currentUser._id}`, {
         method: 'DELETE',
       });
       const data = await res.json();
       if (data.success === false) {
-        dispatch(deleteUserFailure(data.message));
+        // dispatch(deleteUserFailure(data.message));
         return;
       }
-      dispatch(deleteUserSuccess(data));
-      // User will be redirected or UI will change based on Redux state update
+      //   dispatch(deleteUserSuccess(data));
     } catch (err) {
-      dispatch(deleteUserFailure(err.message));
+      //   dispatch(deleteUserFailure(err.message));
     }
   };
 
   const handleSignOut = async () => {
     try {
-      dispatch(signOutUserStart()); // Assuming you have this action
+      //   dispatch(signOutUserStart());
       const res = await fetch('/api/auth/signout');
       const data = await res.json();
       if (data.success === false) {
-        dispatch(deleteUserFailure(data.message)); // Or a signOutFailure action
+        // dispatch(deleteUserFailure(data.message));
         return;
       }
-      dispatch(deleteUserSuccess(data)); // Or a signOutSuccess action that clears user
+      //   dispatch(deleteUserSuccess(data));
     } catch (err) {
-      dispatch(deleteUserFailure(err.message)); // Or a signOutFailure action
+      //   dispatch(deleteUserFailure(err.message));
     }
   };
 
-  // Fallback avatar if currentUser or currentUser.avatar is not available
   const avatarSrc =
-    formData.avatar ||
-    currentUser?.avatar ||
+    formData.profileImage ||
+    currentUser?.profileImage ||
     'https://placehold.co/256x256/374151/E0E0E0?text=User';
 
   return (
@@ -203,26 +172,29 @@ export default function Profile() {
                 {fileUploadError}
               </p>
             )}
-            {!uploading && !fileUploadError && file && formData.avatar && (
-              <p className="mt-1 text-center text-xs text-green-400">
-                Image selected. Click update to save.
-              </p>
-            )}
+            {!uploading &&
+              !fileUploadError &&
+              file &&
+              formData.profileImage && (
+                <p className="mt-1 text-center text-xs text-green-400">
+                  Image selected. Click update to save.
+                </p>
+              )}
           </div>
 
           {/* Username Input */}
           <div>
             <label
-              htmlFor="username"
+              htmlFor="name"
               className="mb-1 block text-sm font-medium text-gray-400"
             >
               Username
             </label>
             <input
               type="text"
-              id="username"
-              placeholder="Your username"
-              defaultValue={currentUser?.username}
+              id="name"
+              placeholder="Your name"
+              defaultValue={currentUser?.name}
               onChange={handleChange}
               className="w-full rounded-lg border border-slate-600 bg-slate-700 p-3 text-gray-200 placeholder-gray-500 transition-colors focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />

@@ -11,8 +11,9 @@ export default function OAuth() {
 
       const result = await signInWithPopup(auth, provider);
 
-      const res = await fetch('/api/auth/google', {
+      const res = await fetch('http://localhost:3000/api/Auth/google', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -23,6 +24,7 @@ export default function OAuth() {
         }),
       });
       const data = await res.json();
+      console.log(data);
       navigate('/dashboard');
     } catch (error) {
       console.log('could not sign in with google', error);
@@ -32,9 +34,9 @@ export default function OAuth() {
     <button
       onClick={handleGoogleClick}
       type="button "
-      className="rounded-[4px] w-full text-sm bg-red-700 py-2 font-poppins uppercase text-white hover:opacity-95 "
+      className="w-full rounded-[4px] bg-red-700 py-2 font-poppins text-sm uppercase text-white hover:opacity-95 "
     >
       Continue with google
-    </button >
+    </button>
   );
 }

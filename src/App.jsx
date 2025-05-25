@@ -25,7 +25,6 @@ import Group from './AppChallenge@/Pages/Groups/Group.jsx';
 import ChallengeGroup from './AppChallenge@/Pages/Groups/Groups.jsx';
 import ChallengeBoard from './AppChallenge@/Pages/LeaderBoard/ChallengeBoard.jsx';
 import DisplayProblemList from './AppChallenge@/Pages/ProblemList/DisplayProblemList.jsx';
-import Profile from './AppChallenge@/Pages/Profile/Profile.jsx';
 
 import '..//src/index.css';
 import AdminCreateTask from './AppCollboration/Pages/AssignedTasks/AdminCreateTask/AdminCreateTask.jsx';
@@ -44,6 +43,7 @@ import CheckUserInfo from './CheckUserInfo.jsx';
 import { RightBarProvider } from './Dashboard/ContextApi/DisplayContextApi.jsx';
 
 import { UserProvider } from './GlobalContextApi/User.jsx';
+import Profile from './profile/Profile.jsx';
 
 function App() {
   return (
