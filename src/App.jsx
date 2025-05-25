@@ -27,25 +27,20 @@ import ChallengeBoard from './AppChallenge@/Pages/LeaderBoard/ChallengeBoard.jsx
 import DisplayProblemList from './AppChallenge@/Pages/ProblemList/DisplayProblemList.jsx';
 import Profile from './AppChallenge@/Pages/Profile/Profile.jsx';
 
+import '..//src/index.css';
 import AdminCreateTask from './AppCollboration/Pages/AssignedTasks/AdminCreateTask/AdminCreateTask.jsx';
 import { RoleProvider } from './AppCourses/context/CoursesContext.jsx';
-import CourseManagementPage from './AppCourses/instructor/ManageInstructor.jsx';
 import InstructorCourses from './AppCourses/instructor/InstructorCourses.jsx';
+import CourseManagementPage from './AppCourses/instructor/ManageInstructor.jsx';
 import StudentCourseDetailPage from './AppCourses/student/ManageStudent.jsx';
 import StudentCourses from './AppCourses/student/StudentCourses.jsx';
-import VirtualLearningInterface from './AppLiveClass/VirtualLearningInterface.jsx';
 import CodeingEnvironment from './AppEditor/CodeingEnvironment.jsx';
 import EditorLayout from './AppEditor/Layouts/EditorLayout.jsx';
-import '..//src/index.css';
-import {
-  RightBarProvider,
-  RightBarContextApi,
-} from './Dashboard/ContextApi/DisplayContextApi.jsx';
-import ForgetPassword from './Authentication/ForgetPassword.jsx';
-import OtpVerification from './Authentication/Components/OtpVerification.jsx';
-import OTP from './Authentication/OTP.jsx';
+import VirtualLearningInterface from './AppLiveClass/VirtualLearningInterface.jsx';
 import ChangePassword from './Authentication/ChangePassword.jsx';
-import ProfilePage from './profile/ProfilePage.jsx';
+import ForgetPassword from './Authentication/ForgetPassword.jsx';
+import OTP from './Authentication/OTP.jsx';
+import { RightBarProvider } from './Dashboard/ContextApi/DisplayContextApi.jsx';
 
 function App() {
   // const { user } = useContext(CollabContext);
@@ -102,7 +97,7 @@ function App() {
               element={<StudentCourseDetailPage />}
             />
             <Route path="class-live" element={<VirtualLearningInterface />} />
-            <Route path="edit-profile" element={<ProfilePage />} />
+            <Route path="edit-profile" element={<Profile />} />
           </Routes>
         </Router>
       </RightBarProvider>
