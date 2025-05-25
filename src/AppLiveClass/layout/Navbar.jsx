@@ -22,10 +22,10 @@ const Navbar = ({
   changeLayout,
 }) => {
   return (
-    <div className="flex justify-between items-center mb-6 py-3 px-4 bg-dark-bg-secondary2/50 backdrop-blur-sm rounded-lg shadow-md border border-dark-gray-border">
+    <div className="font-poppins flex justify-between items-center mb-6 py-3 px-4 bg-dark-bg-secondary2/50 backdrop-blur-sm rounded-lg shadow-md border border-dark-gray-border">
       <div className="flex items-center gap-2">
         <Book size={24} className="text-text_primary" />
-        <span className="font-robert-medium text-xl text-dark-text-color">
+        <span className=" text-xl text-dark-text-color">
           VirtualClassroom
         </span>
       </div>
@@ -91,7 +91,7 @@ const Navbar = ({
 
         <button
           onClick={toggleView}
-          className="bg-text_primary hover:bg-text_primary/90 px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg shadow-text_primary/20 transition-all duration-300 text-dark-text-color font-robert-medium"
+          className="bg-text_primary hover:bg-text_primary/90 px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg shadow-text_primary/20 transition-all duration-300 text-dark-text-color "
         >
           <User size={16} />
           <span>{view === "student" ? "Instructor View" : "Student View"}</span>

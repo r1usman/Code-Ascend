@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext();
 
-const UserProvider = ({ children }) => {
+export const UserProvider = ({ children }) => {
 
     const [User, setUser] = useState(null)
     const [loading, setLoading] = useState(true);
@@ -35,6 +35,7 @@ const UserProvider = ({ children }) => {
     }
 
     const clearUser = () => {
+        console.log("IN here");
         setUser(null)
         localStorage.removeItem("token");
     }

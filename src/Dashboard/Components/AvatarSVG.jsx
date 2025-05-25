@@ -31,7 +31,7 @@ export default function AvatarSVG({
   const imgSize = size - 3 * (stroke + gap)
 
   return (
-    <div className="relative" style={{ width: size, height: size }}>
+    <div className="relative cursor-pointer" style={{ width: size, height: size }}>
       <svg width={size} height={size}>
         <circle
           cx={size/2}

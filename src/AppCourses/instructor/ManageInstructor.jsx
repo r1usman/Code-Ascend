@@ -19,6 +19,7 @@ import {
   FilePlus2,
 } from 'lucide-react';
 import Header from '../components/Header';
+import { useNavigate } from 'react-router-dom';
 
 // Dummy Data (replace with actual data fetching)
 const courseDetailsData = {
@@ -252,6 +253,7 @@ const ManageInstructor = () => {
   const [studentRequests, setStudentRequests] = useState(studentRequestsData);
   const [assessments, setAssessments] = useState(assessmentHistoryData);
 
+  const navigate = useNavigate();
   const handleAcceptStudent = (studentId) => {
     setStudentRequests((prev) => prev.filter((req) => req.id !== studentId));
     // Add logic to actually accept student
@@ -281,9 +283,11 @@ const ManageInstructor = () => {
 
   return (
     <div className="flex min-h-screen flex-col bg-dark-bg-primary font-poppins text-dark-text-color">
-      <Header />
+          <div className='sticky top-0 z-40 bg-dark-bg-secondary2 border-b border-text_primary text-white font-poppins text-2xl font-medium px-4 py-5  '> 
+      Code Ascend
+    </div>
 
-      <main className="container mx-auto flex-grow px-4 py-8 sm:px-6 md:py-10 lg:px-8">
+      <main className="font-poppins container mx-auto flex-grow px-4 py-8 sm:px-6 md:py-10 lg:px-8">
         {/* Course Banner Section */}
         <Card className="mb-8 overflow-hidden">
           <div className="md:flex">
@@ -563,7 +567,7 @@ const ManageInstructor = () => {
                   variant="primary"
                   className="w-full"
                   onClick={() => {
-                    /* Open schedule modal */
+                    
                   }}
                 >
                   <CalendarDays className="mr-2 h-4 w-4" />{' '}
@@ -577,7 +581,7 @@ const ManageInstructor = () => {
                     !isLiveClassTime() ? 'cursor-not-allowed opacity-50' : ''
                   }`}
                   onClick={() => {
-                    /* Navigate to live class page */
+                    navigate("/class-live")
                   }}
                   disabled={!isLiveClassTime()}
                   title={

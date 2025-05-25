@@ -46,11 +46,15 @@ import OtpVerification from './Authentication/Components/OtpVerification.jsx';
 import OTP from './Authentication/OTP.jsx';
 import ChangePassword from './Authentication/ChangePassword.jsx';
 import ProfilePage from './profile/ProfilePage.jsx';
+import CheckUserInfo from './CheckUserInfo.jsx';
+
+import {UserProvider} from "./GlobalContextApi/User.jsx"
 
 function App() {
-  // const { user } = useContext(CollabContext);
+  
   return (
-    <RoleProvider>
+    <UserProvider>
+      <RoleProvider>
       <RightBarProvider>
         <Router>
           <Routes>
@@ -103,10 +107,13 @@ function App() {
             />
             <Route path="class-live" element={<VirtualLearningInterface />} />
             <Route path="edit-profile" element={<ProfilePage />} />
+            <Route path="/User" element={<CheckUserInfo />} />
           </Routes>
         </Router>
       </RightBarProvider>
     </RoleProvider>
+    </UserProvider>
+    
   );
 }
 export default App;
