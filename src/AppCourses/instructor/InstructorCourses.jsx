@@ -532,7 +532,7 @@ function InstructorCourses() {
     <div className="flex min-h-screen flex-col bg-dark-bg-primary font-poppins text-dark-text-color">
       <div className="sticky top-0 z-40 border-b border-text_primary bg-dark-bg-secondary2 px-4 py-5 font-poppins text-white">
         <div className="flex items-center justify-between text-2xl font-medium">
-          <span>Code Ascend</span>
+          <Link to={'/dashboard'}>Code Ascend</Link>
           <button
             onClick={() => setIsCreateCourseModalOpen(true)}
             className="flex items-center rounded-[6px] bg-text_primary px-6 py-3 text-sm font-semibold text-dark-text-color shadow-md transition-all duration-300 hover:opacity-90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75"

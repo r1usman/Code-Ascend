@@ -283,11 +283,9 @@ const ManageInstructor = () => {
 
   return (
     <div className="flex min-h-screen flex-col bg-dark-bg-primary font-poppins text-dark-text-color">
-          <div className='sticky top-0 z-40 bg-dark-bg-secondary2 border-b border-text_primary text-white font-poppins text-2xl font-medium px-4 py-5  '> 
-      Code Ascend
-    </div>
+      <Header />
 
-      <main className="font-poppins container mx-auto flex-grow px-4 py-8 sm:px-6 md:py-10 lg:px-8">
+      <main className="container mx-auto flex-grow px-4 py-8 font-poppins sm:px-6 md:py-10 lg:px-8">
         {/* Course Banner Section */}
         <Card className="mb-8 overflow-hidden">
           <div className="md:flex">
@@ -563,13 +561,7 @@ const ManageInstructor = () => {
                     </p>
                   </div>
                 )}
-                <Button
-                  variant="primary"
-                  className="w-full"
-                  onClick={() => {
-                    
-                  }}
-                >
+                <Button variant="primary" className="w-full" onClick={() => {}}>
                   <CalendarDays className="mr-2 h-4 w-4" />{' '}
                   {course.nextLiveClass
                     ? 'Reschedule Live Class'
@@ -581,7 +573,7 @@ const ManageInstructor = () => {
                     !isLiveClassTime() ? 'cursor-not-allowed opacity-50' : ''
                   }`}
                   onClick={() => {
-                    navigate("/class-live")
+                    navigate('/class-live');
                   }}
                   disabled={!isLiveClassTime()}
                   title={
