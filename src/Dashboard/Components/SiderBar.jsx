@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { navItems } from '../DashboardAssests/index';
 import { setting } from '../DashboardAssests/index';
-// import { UserContext } from '../../ContextApi/User';
+import { UserContext } from '../../GlobalContextApi/User.jsx';
 import { useNavigate } from 'react-router-dom';
 const SideBar = ({ activeMenu }) => {
-  // const {User , clearUser} = useContext(UserContext)
+  const {User ,setUser, clearUser} = useContext(UserContext)
 
   const navigate = useNavigate();
   const handleClick = (route) => {
@@ -18,8 +18,8 @@ const SideBar = ({ activeMenu }) => {
   };
 
   const handleLogout = () => {
-    // localStorage.clear();
-    // clearUser();
+    localStorage.clear();
+    clearUser();
     navigate('/');
   };
 

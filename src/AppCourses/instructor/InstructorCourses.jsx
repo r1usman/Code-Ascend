@@ -370,42 +370,11 @@ const CreateCourseModal = ({ isOpen, onClose, onCourseCreate }) => {
 // Header Component
 
 const Header = (
-  { onOpenCreateCourseModal } // Added prop to open modal
+   // Added prop to open modal
 ) => {
-  const { isStudent, toggleView } = useRole(); // Assuming this is used to check if the user is a student or instructor
-  return (
-    <header className="sticky top-0 z-50 border-b border-border_Col bg-dark-bg-secondary2 text-dark-text-color shadow-lg">
-      <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center">
-          <BookOpen className="mr-2 h-8 w-8 text-text_primary" />
-          <h1 className="font-general text-3xl tracking-tight">
-            Course<span className="text-text_primary">Craft</span>
-          </h1>
-        </div>
-        <nav className="flex items-center space-x-4 sm:space-x-6">
-          <Link
-            to="/student-courses"
-            onClick={toggleView} // Toggle view when clicked
-            className="hidden font-poppins text-sm transition-colors duration-300 hover:text-text_primary sm:block"
-          >
-            {isStudent ? 'Instructor View' : 'Student View'}
-          </Link>
-          <button
-            onClick={onOpenCreateCourseModal} // Trigger modal open
-            className="flex items-center rounded-lg bg-text_primary px-4 py-2 font-poppins text-xs font-semibold text-dark-text-color shadow-sm transition-all duration-300 hover:opacity-90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75 sm:px-5 sm:py-2.5 sm:text-sm"
-          >
-            <PlusCircle className="mr-1.5 h-4 w-4 sm:mr-2" /> Create Course
-          </button>
-          <a
-            href="#"
-            className="text-dark-text-muted transition-colors duration-300 hover:text-text_primary"
-          >
-            <Settings className="h-5 w-5 sm:h-6 sm:w-6" />
-          </a>
-        </nav>
-      </div>
-    </header>
-  );
+   <div className='sticky top-0 z-40 bg-dark-bg-secondary2 border-b border-text_primary text-white font-poppins text-2xl font-medium px-4 py-5  '> 
+      Code Ascend
+    </div>
 };
 
 // Footer Component - REMAINS THE SAME
@@ -506,7 +475,7 @@ const CourseCard = ({ course }) => {
         </div>
         <Link
           to={`/instructor-manage`}
-          className="flex w-full items-center justify-center rounded-md bg-text_primary px-4 py-2.5 font-poppins text-sm font-semibold text-dark-bg-primary shadow-md transition-all duration-300 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75"
+          className="flex w-full items-center justify-center rounded-[6px] bg-text_primary px-4 py-2.5 font-poppins text-sm font-semibold text-dark-bg-primary shadow-md transition-all duration-300 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75"
         >
           <Edit3 className="mr-2 h-4 w-4" />
           Manage Course
@@ -527,7 +496,7 @@ const CourseGrid = ({ courses, onOpenCreateCourseModal }) => {
         </p>
         <button
           onClick={onOpenCreateCourseModal} // Trigger modal open
-          className="mx-auto flex items-center rounded-lg bg-text_primary px-6 py-3 font-poppins text-sm font-semibold text-dark-text-color shadow-md transition-all duration-300 hover:opacity-90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75"
+          className="mx-auto flex items-center rounded-[6px] bg-text_primary px-6 py-3 font-poppins text-sm font-semibold text-dark-text-color shadow-md transition-all duration-300 hover:opacity-90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75"
         >
           <PlusCircle className="mr-2 h-5 w-5" /> Create Your First Course
         </button>
@@ -558,12 +527,13 @@ function InstructorCourses() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-dark-bg-primary font-poppins text-dark-text-color">
-      <Header onOpenCreateCourseModal={handleOpenCreateCourseModal} />
-
-      <main className="container mx-auto flex-grow px-4 py-8 sm:px-6 md:py-10 lg:px-8">
+    <div className="flex font-poppins min-h-screen flex-col bg-dark-bg-primary text-dark-text-color">
+      <div className='sticky top-0 z-40 bg-dark-bg-secondary2 border-b border-text_primary text-white font-poppins text-2xl font-medium px-4 py-5  '> 
+        Code Ascend
+      </div>
+      <main className="font-poppins container mx-auto flex-grow px-4 py-8 sm:px-6 md:py-10 lg:px-8">
         <div className="mb-6 flex items-center justify-between md:mb-8">
-          <h2 className="font-general text-2xl tracking-tight text-dark-text-color sm:text-3xl">
+          <h2 className=" text-2xl tracking-tight text-dark-text-color sm:text-3xl">
             Your Courses
           </h2>
           {/* Button to create course can also be here if preferred, or only in header */}

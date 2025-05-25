@@ -61,7 +61,7 @@ export default function RightSideBar({ changeShow }) {
     <aside className="w-full h-full space-y-5 text-white font-poppins mt-7 bg-dark-bg-secondary4 rounded-2xl pt-16 shadow-md flex flex-col">
       <div className='space-y-3'>
         {/* Header */}
-        <div className=" flex flex-col items-center gap-4 justify-between">
+        <div className=" flex flex-col items-center gap-4 justify-between ">
           <h2 className="text-lg font-semibold">Statistic</h2>
           <AvatarSVG changeShow={changeShow} />
         </div>

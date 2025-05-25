@@ -13,6 +13,7 @@ const Login = () => {
   const [error, seterror] = useState('');
   const [hide, sethide] = useState(true); // State to toggle password visibility
   const navigate = useNavigate();
+  const {updateUser} = useContext(UserContext)
 
   const sendData = async()=>{
     try {
@@ -26,7 +27,7 @@ const Login = () => {
 
       const User = result.data.user;
       const Token = result.data.token;
-      // updateUser(User, Token)
+      updateUser(User, Token)
       console.log(User);
       if(User)
         navigate("/dashboard")

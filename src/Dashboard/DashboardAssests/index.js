@@ -1,12 +1,18 @@
 import {
   Activity,
   BookOpen,
+  Code,
   Code2,
+  FlaskConical,
+  GraduationCap,
   LogOut,
   MessageSquare,
   Settings,
+  Terminal,
   User,
+  Users,
 } from 'lucide-react';
+import { FaChalkboardTeacher } from 'react-icons/fa';
 
 export const notifications = [
   {
@@ -58,21 +64,15 @@ export const recentActivities = [
 
 export const navItems = [
   { to: '/Dashboard', label: 'Dashboard', Icon: Activity },
-  { to: '/appchallenge@', label: 'Challenges', Icon: Code2 },
-  { to: '/appcollaboration', label: 'Collaborations', Icon: BookOpen },
-
-  { to: '/appvirtuallab', label: 'Virtual Lab', Icon: User },
-  { to: '/appeditor', label: 'Editor', Icon: User },
-  { to: '/instructor-courses', label: 'Teaching', Icon: User },
-  { to: '/student-courses', label: 'Learning', Icon: User },
+  { to: '/appchallenge@', label: 'Challenges', Icon: Terminal },
+  { to: '/appcollaboration', label: 'Collaborations', Icon: Users },
+  { to: '/appvirtuallab', label: 'Virtual Lab', Icon: FlaskConical },
+  { to: '/appeditor', label: 'Editor', Icon: Code },
+  { to: '/instructor-courses', label: 'Teaching', Icon: FaChalkboardTeacher },
+  { to: '/student-courses', label: 'Learning', Icon: GraduationCap },
 ];
 
 export const setting = [
-  {
-    to: '/settings',
-    label: 'Setting',
-    Icon: Settings,
-  },
   {
     to: '/Logout',
     label: 'Logout',

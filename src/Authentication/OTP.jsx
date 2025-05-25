@@ -21,6 +21,7 @@ const OTP = () => {
 
   console.log("User Typing OTP",otp);
   
+  
 
   
 

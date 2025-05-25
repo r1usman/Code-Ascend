@@ -40,68 +40,76 @@ import VirtualLearningInterface from './AppLiveClass/VirtualLearningInterface.js
 import ChangePassword from './Authentication/ChangePassword.jsx';
 import ForgetPassword from './Authentication/ForgetPassword.jsx';
 import OTP from './Authentication/OTP.jsx';
+import CheckUserInfo from './CheckUserInfo.jsx';
 import { RightBarProvider } from './Dashboard/ContextApi/DisplayContextApi.jsx';
 
+import { UserProvider } from './GlobalContextApi/User.jsx';
+
 function App() {
-  // const { user } = useContext(CollabContext);
   return (
-    <RoleProvider>
-      <RightBarProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/SignUp" element={<Signup />} />
-            <Route path="/ForgetPassword" element={<ForgetPassword />} />
-            <Route path="/otp" element={<OTP />} />
-            <Route path="/ChangePassword" element={<ChangePassword />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+    <UserProvider>
+      <RoleProvider>
+        <RightBarProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/SignUp" element={<Signup />} />
+              <Route path="/ForgetPassword" element={<ForgetPassword />} />
+              <Route path="/otp" element={<OTP />} />
+              <Route path="/ChangePassword" element={<ChangePassword />} />
+              <Route path="/dashboard" element={<Dashboard />} />
 
-            <Route path="/appchallenge" element={<AppChallenge />} />
+              <Route path="/appchallenge" element={<AppChallenge />} />
 
-            <Route path="/appchallenge@" element={<AppChallengeAt />}>
-              <Route index element={<Navigate to={'dashboard'} />} />
-              <Route path="dashboard" element={<DashboardChallenge />} />
-              <Route path="problemlist" element={<DisplayProblemList />} />
-              <Route path="groups" element={<ChallengeGroup />} />
-              <Route path="groups/:id" element={<Group />} />
-              <Route path="leaderboard" element={<ChallengeBoard />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="*" element={<Nopage />} />
-            </Route>
+              <Route path="/appchallenge@" element={<AppChallengeAt />}>
+                <Route index element={<Navigate to={'dashboard'} />} />
+                <Route path="dashboard" element={<DashboardChallenge />} />
+                <Route path="problemlist" element={<DisplayProblemList />} />
+                <Route path="groups" element={<ChallengeGroup />} />
+                <Route path="groups/:id" element={<Group />} />
+                <Route path="leaderboard" element={<ChallengeBoard />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="*" element={<Nopage />} />
+              </Route>
 
-            <Route path="/appcollaboration" element={<CollaborationLayout />}>
-              <Route index element={<Navigate to="all-groups" replace />} />
-              <Route path="all-groups" element={<AllGroups />} />
-              <Route path="my-groups" element={<MyGroups />} />
-              <Route path="assigned-tasks" element={<TaskAssigned />} />
-              <Route path="tasks" element={<TasksPage />} />
-              <Route path="code/live" element={<LivePair />} />
-              <Route path="AdminTask" element={<AdminCreateTask />} />
-              <Route path="Live" element={<AppCollaboration />} />
-              <Route path="*" element={<Nopage />} />
-            </Route>
-            <Route path="/appeditor" element={<EditorLayout />}>
-              <Route index element={<Navigate to="editor" replace />} />
-              <Route path="editor" element={<CodeingEnvironment />} />
-              <Route path="*" element={<Nopage />} />
-            </Route>
+              <Route path="/appcollaboration" element={<CollaborationLayout />}>
+                <Route index element={<Navigate to="all-groups" replace />} />
+                <Route path="all-groups" element={<AllGroups />} />
+                <Route path="my-groups" element={<MyGroups />} />
+                <Route path="assigned-tasks" element={<TaskAssigned />} />
+                <Route path="tasks" element={<TasksPage />} />
+                <Route path="code/live" element={<LivePair />} />
+                <Route path="AdminTask" element={<AdminCreateTask />} />
+                <Route path="Live" element={<AppCollaboration />} />
+                <Route path="*" element={<Nopage />} />
+              </Route>
+              <Route path="/appeditor" element={<EditorLayout />}>
+                <Route index element={<Navigate to="editor" replace />} />
+                <Route path="editor" element={<CodeingEnvironment />} />
+                <Route path="*" element={<Nopage />} />
+              </Route>
 
-            <Route path="instructor-courses" element={<InstructorCourses />} />
-            <Route path="student-courses" element={<StudentCourses />} />
-            <Route
-              path="instructor-manage"
-              element={<CourseManagementPage />}
-            />
-            <Route
-              path="student-manage"
-              element={<StudentCourseDetailPage />}
-            />
-            <Route path="class-live" element={<VirtualLearningInterface />} />
-            <Route path="edit-profile" element={<Profile />} />
-          </Routes>
-        </Router>
-      </RightBarProvider>
-    </RoleProvider>
+              <Route
+                path="instructor-courses"
+                element={<InstructorCourses />}
+              />
+              <Route path="student-courses" element={<StudentCourses />} />
+              <Route
+                path="instructor-manage"
+                element={<CourseManagementPage />}
+              />
+              <Route
+                path="student-manage"
+                element={<StudentCourseDetailPage />}
+              />
+              <Route path="class-live" element={<VirtualLearningInterface />} />
+              <Route path="edit-profile" element={<Profile />} />
+              <Route path="/User" element={<CheckUserInfo />} />
+            </Routes>
+          </Router>
+        </RightBarProvider>
+      </RoleProvider>
+    </UserProvider>
   );
 }
 export default App;

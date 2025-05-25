@@ -26,16 +26,18 @@ const SignUp = () => {
   const navigate = useNavigate();
 
     const sendData = async()=>{
+      console.log("here");
+      
       try {
         const uploadImage = await UploadImage(ProfilePic);
       
       
         const profileImageUrl = uploadImage.Image || "";
 
-        console.log("image", profileImageUrl);
+        // console.log("image", profileImageUrl);
 
         const response = await axios.post("http://localhost:3000/api/Auth/VerifyEmail",{  email })
-        console.log(response.data.isExist);
+        console.log("email ",response.data.isExist);
 
         if(response.data.isExist == false)
         {

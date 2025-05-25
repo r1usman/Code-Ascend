@@ -75,7 +75,7 @@ const StudentView = ({ layout }) => {
 
   // Default layout
   return (
-    <div className="flex flex-col h-full">
+    <div className=" flex flex-col h-full">
       <div className="mb-4">
         <h2 className="text-2xl font-bold text-gray-100 mb-2">
           Live Class: Advanced Web Development
