@@ -19,7 +19,7 @@ import { useRole } from '../context/CoursesContext';
 import { Link } from 'react-router-dom';
 
 // Dummy Course Data (representing instructor's courses) - REMAINS THE SAME
-const coursesData = [ 
+const coursesData = [
   {
     id: 1,
     title: 'Advanced Algorithms & Data Structures',
@@ -145,7 +145,9 @@ const Select = React.forwardRef(
 
 // Create Course Modal Component
 const CreateCourseModal = ({ isOpen, onClose, onCourseCreate }) => {
+  console.log('CreateCourseModal rendered');
   const [title, setTitle] = useState('');
+
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [duration, setDuration] = useState('');
@@ -369,13 +371,13 @@ const CreateCourseModal = ({ isOpen, onClose, onCourseCreate }) => {
 
 // Header Component
 
-const Header = (
-   // Added prop to open modal
-) => {
-   <div className='sticky top-0 z-40 bg-dark-bg-secondary2 border-b border-text_primary text-white font-poppins text-2xl font-medium px-4 py-5  '> 
+const Header = () =>
+  // Added prop to open modal
+  {
+    <div className="sticky top-0 z-40 border-b border-text_primary bg-dark-bg-secondary2 px-4 py-5 font-poppins text-2xl font-medium text-white  ">
       Code Ascend
-    </div>
-};
+    </div>;
+  };
 
 // Footer Component - REMAINS THE SAME
 const Footer = () => (
@@ -527,11 +529,20 @@ function InstructorCourses() {
   };
 
   return (
-    <div className="flex font-poppins min-h-screen flex-col bg-dark-bg-primary text-dark-text-color">
-      <div className='sticky top-0 z-40 bg-dark-bg-secondary2 border-b border-text_primary text-white font-poppins text-2xl font-medium px-4 py-5  '> 
-        Code Ascend
+    <div className="flex min-h-screen flex-col bg-dark-bg-primary font-poppins text-dark-text-color">
+      <div className="sticky top-0 z-40 border-b border-text_primary bg-dark-bg-secondary2 px-4 py-5 font-poppins text-white">
+        <div className="flex items-center justify-between text-2xl font-medium">
+          <span>Code Ascend</span>
+          <button
+            onClick={() => setIsCreateCourseModalOpen(true)}
+            className="flex items-center rounded-[6px] bg-text_primary px-6 py-3 text-sm font-semibold text-dark-text-color shadow-md transition-all duration-300 hover:opacity-90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75"
+          >
+            <PlusCircle className="mr-2 h-5 w-5" /> Create Your First Course
+          </button>
+        </div>
       </div>
-      <main className="font-poppins container mx-auto flex-grow px-4 py-8 sm:px-6 md:py-10 lg:px-8">
+
+      <main className="container mx-auto flex-grow px-4 py-8 font-poppins sm:px-6 md:py-10 lg:px-8">
         <div className="mb-6 flex items-center justify-between md:mb-8">
           <h2 className=" text-2xl tracking-tight text-dark-text-color sm:text-3xl">
             Your Courses

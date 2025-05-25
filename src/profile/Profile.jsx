@@ -5,23 +5,6 @@ import axios from 'axios';
 // import { Link } from "react-router-dom"; // Link is imported but not used in this component.
 
 // Placeholder for an icon, e.g., from lucide-react or heroicons
-const CameraIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="text-white"
-  >
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-    <circle cx="12" cy="13" r="3" />
-  </svg>
-);
 
 export default function Profile() {
   const fileRef = useRef(null);
@@ -95,12 +78,8 @@ export default function Profile() {
     'https://placehold.co/256x256/374151/E0E0E0?text=User';
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-900 p-4 font-sans">
-      <div className="w-full max-w-md rounded-xl bg-slate-800 p-6 text-gray-200 shadow-2xl sm:p-8">
-        <h1 className="mb-8 text-center text-3xl font-bold text-white">
-          My Profile
-        </h1>
-
+    <div className="flex min-h-screen items-center justify-center bg-dark-bg-secondary4 p-4 font-sans">
+      <div className="w-full max-w-md rounded-xl  bg-[#141414] p-6 text-gray-200 shadow-2xl sm:p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Avatar Upload Section */}
           <div className="flex cursor-pointer flex-col items-center space-y-3">
@@ -159,7 +138,7 @@ export default function Profile() {
               placeholder="Your name"
               defaultValue={currentUser?.name}
               onChange={handleChange}
-              className="w-full rounded-lg border border-slate-600 bg-slate-700 p-3 text-gray-200 placeholder-gray-500 transition-colors focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full rounded-lg border border-slate-600 bg-dark-bg-secondary2 p-3 text-gray-200 placeholder-gray-500 transition-colors focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
@@ -177,7 +156,7 @@ export default function Profile() {
               placeholder="your.email@example.com"
               defaultValue={currentUser?.email}
               onChange={handleChange}
-              className="w-full rounded-lg border border-slate-600 bg-slate-700 p-3 text-gray-200 placeholder-gray-500 transition-colors focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full rounded-lg border border-slate-600 bg-dark-bg-secondary2 p-3 text-gray-200 placeholder-gray-500 transition-colors focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
@@ -194,7 +173,7 @@ export default function Profile() {
               id="password"
               placeholder="Leave blank to keep current"
               onChange={handleChange}
-              className="w-full rounded-lg border border-slate-600 bg-slate-700 p-3 text-gray-200 placeholder-gray-500 transition-colors focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full rounded-lg border border-slate-600 bg-dark-bg-secondary2 p-3 text-gray-200 placeholder-gray-500 transition-colors focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
