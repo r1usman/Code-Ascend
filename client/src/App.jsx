@@ -47,6 +47,8 @@ import OtpVerification from './Authentication/Components/OtpVerification.jsx';
 import OTP from './Authentication/OTP.jsx';
 import ChangePassword from './Authentication/ChangePassword.jsx';
 import ProfilePage from './profile/ProfilePage.jsx';
+import ProblemGenerator from './components/ProblemGenerator.jsx';
+
 
 function App() {
   return (
@@ -108,6 +110,10 @@ function App() {
             />
             <Route path="class-live" element={<VirtualLearningInterface />} />
             <Route path="edit-profile" element={<ProfilePage />} />
+
+            {/* Add this new route */}
+            <Route path="problem-generator" element={<ProblemGenerator />} />
+
           </Routes>
         </Router>
       </RightBarProvider>
