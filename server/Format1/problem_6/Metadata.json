@@ -1,0 +1,15 @@
+{
+    "difficulty": "EASY",
+    "raw_tags": "['math', 'dp', 'constructive algorithms']",
+    "name": null,
+    "source": "codeforces",
+    "tags": "['Dynamic programming', 'Mathematics', 'Constructive algorithms']",
+    "skill_types": "['Dynamic programming']",
+    "url": "https://codeforces.com/problemset/problem/1713/C",
+    "Expected Auxiliary Space": null,
+    "Expected Time Complexity": null,
+    "time_limit": "1 second",
+    "date": "2022-08-06",
+    "picture_num": "0",
+    "memory_limit": "256 megabytes"
+}

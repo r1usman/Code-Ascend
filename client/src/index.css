@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Charmonman:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    @apply rounded-full border border-stone-200 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-yellow-400 md:px-6 md:py-3
+  }
+
+  /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
+  .loader {
+    width: 45px;
+    aspect-ratio: 0.75;
+    --c: no-repeat linear-gradient(theme(colors.stone.800) 0 0);
+    background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
+    background-size: 20% 50%;
+    animation: loading 1s infinite linear;
+  }
+
+  @keyframes loading {
+    20% {
+      background-position: 0% 0%, 50% 50%, 100% 50%;
+    }
+
+    40% {
+      background-position: 0% 100%, 50% 0%, 100% 50%;
+    }
+
+    60% {
+      background-position: 0% 50%, 50% 100%, 100% 0%;
+    }
+
+    80% {
+      background-position: 0% 50%, 50% 50%, 100% 100%;
+    }
+  }
+}
+
+
+
+.Card_Relative {
+  @apply relative bg-dark-bg-secondary1 rounded-xl overflow-hidden p-4 flex flex-col justify-between transition-transform transition-shadow duration-300 ease-out hover:shadow-xl hover:shadow-black/50 cursor-pointer
+}
+
+.Card_Absolute {
+  @apply absolute -top-8 -right-28 size-56 rounded-full bg-gradient-to-br from-orange-600 to-transparent opacity-75 blur-3xl transition-all duration-500 ease-out
+}
+
+.Card_Absolute_top {
+  @apply absolute -top-16 size-32 rounded-full bg-gradient-to-br from-orange-600 to-transparent opacity-75 blur-3xl transition-all duration-500 ease-out
+}
+
+.Card_Relative_top {
+  @apply relative bg-dark-bg-secondary1 h-[20vh] rounded-xl overflow-hidden p-1 flex flex-col justify-between transition-transform transition-shadow duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:shadow-black/50 cursor-pointer
+}
+
+.Btn1 {
+  @apply flex items-center gap-2 bg-emerald-600 rounded-[6px] text-white px-4 py-2 font-medium transition-all duration-200 focus:outline-none focus:ring-0 focus:ring-offset-0
+}
+
+
+.card {
+  @apply bg-dark-bg-secondary3 border-border_Col rounded-[12px] shadow-lg overflow-hidden border transition-all duration-300;
+}
+
+.Admcard {
+  @apply border-border_Col rounded-[12px] shadow-lg overflow-hidden border transition-all duration-300;
+}
+
+.card-hover {
+  @apply hover:border-black hover:shadow-xl hover:-translate-y-1;
+}
+
+.btn-ghost {
+  @apply Btn1 bg-transparent hover:bg-black text-white;
+}

@@ -1,0 +1,15 @@
+{
+    "difficulty": "HARD",
+    "raw_tags": "['greedy', 'implementation', 'binary search', 'dp', 'two pointers']",
+    "name": null,
+    "source": "codeforces",
+    "tags": "['Sorting', 'Amortized analysis', 'Implementation', 'Greedy algorithms', 'Dynamic programming']",
+    "skill_types": "['Dynamic programming', 'Sorting', 'Amortized analysis', 'Greedy algorithms']",
+    "url": "https://codeforces.com/problemset/problem/1494/C",
+    "Expected Auxiliary Space": null,
+    "Expected Time Complexity": null,
+    "time_limit": "2 seconds",
+    "date": "2021-03-02",
+    "picture_num": "0",
+    "memory_limit": "256 megabytes"
+}

@@ -1,0 +1,28 @@
+{
+    "problemId": "longest-apples-001",
+    "problemName": "Longest Contiguous Apples",
+    "solutions": [
+      {
+        "code": "n = int(input())\ns = input()\n\nres = 0\nfor i in range(n):\n    max_len = 0\n    count = 0\n    for j in range(i, n):\n        if s[j] == '1':\n            count += 1\n            max_len = max(max_len, count)\n        else:\n            count = 0\n        res += max_len\nprint(res)",
+        "language": "python",
+        "solutionNumber": 1
+      },
+      {
+        "code": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    int n;\n    string s;\n    cin >> n >> s;\n    long long res = 0;\n    for (int i = 0; i < n; ++i) {\n        int max_len = 0, count = 0;\n        for (int j = i; j < n; ++j) {\n            if (s[j] == '1') count++;\n            else count = 0;\n            max_len = max(max_len, count);\n            res += max_len;\n        }\n    }\n    cout << res << endl;\n    return 0;\n}",
+        "language": "cpp",
+        "solutionNumber": 2
+      },
+      {
+        "code": "const readline = require('readline');\nconst rl = readline.createInterface({ input: process.stdin, output: process.stdout });\n\nlet input = [];\nrl.on('line', line => input.push(line)).on('close', () => {\n    const n = parseInt(input[0]);\n    const s = input[1];\n    let res = 0;\n    for (let i = 0; i < n; i++) {\n        let count = 0, maxLen = 0;\n        for (let j = i; j < n; j++) {\n            if (s[j] === '1') count++;\n            else count = 0;\n            maxLen = Math.max(maxLen, count);\n            res += maxLen;\n        }\n    }\n    console.log(res);\n});",
+        "language": "javascript",
+        "solutionNumber": 3
+      },
+      {
+        "code": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        String s = sc.next();\n        long res = 0;\n        for (int i = 0; i < n; i++) {\n            int count = 0, maxLen = 0;\n            for (int j = i; j < n; j++) {\n                if (s.charAt(j) == '1') count++;\n                else count = 0;\n                maxLen = Math.max(maxLen, count);\n                res += maxLen;\n            }\n        }\n        System.out.println(res);\n    }\n}",
+        "language": "java",
+        "solutionNumber": 4
+      }
+    ],
+    "createdAt": "2025-05-24T00:00:00.000Z"
+  }
+  

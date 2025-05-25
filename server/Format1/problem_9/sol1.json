@@ -1,0 +1,5 @@
+{
+    "code": "def solve():\n    t = int(input())\n    for _ in range(t):\n        n, m = map(int, input().split())\n        a = list(map(int, input().split()))\n        b = list(map(int, input().split()))\n\n        def process(a, b):\n            a_set = set(a)\n            b_set = set(b)\n            res = 0\n            a_set = set(a)\n            b_set = set(b)\n            prefix = [0] * (len(b) + 1)\n            for i in range(len(b)):\n                prefix[i + 1] = prefix[i] + (b[i] in a_set)\n            j = 0\n            for i in range(len(b)):\n                while j < len(a) and a[j] <= b[i]:\n                    j += 1\n                res = max(res, prefix[i + 1] - prefix[i])\n            return res\n\n        a_pos = [x for x in a if x > 0]\n        b_pos = [x for x in b if x > 0]\n        a_neg = [-x for x in reversed(a) if x < 0]\n        b_neg = [-x for x in reversed(b) if x < 0]\n\n        ans = process(a_pos, b_pos) + process(a_neg, b_neg)\n        print(ans)\n\nsolve()",
+    "language": "python",
+    "solutionNumber": 1
+  }

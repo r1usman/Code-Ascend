@@ -1,0 +1,15 @@
+{
+    "difficulty": "MEDIUM",
+    "raw_tags": "['combinatorics', 'math']",
+    "name": null,
+    "source": "codeforces",
+    "tags": "['Combinatorics', 'Mathematics']",
+    "skill_types": "[]",
+    "url": "https://codeforces.com/problemset/problem/630/H",
+    "Expected Auxiliary Space": null,
+    "Expected Time Complexity": null,
+    "time_limit": null,
+    "date": "2019-12-31",
+    "picture_num": null,
+    "memory_limit": null
+}

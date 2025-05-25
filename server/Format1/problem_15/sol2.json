@@ -1,0 +1,5 @@
+{
+    "code": "#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nconst int MOD = 1e9 + 7;\n\nint main() {\n    string s;\n    cin >> s;\n    int n = s.size();\n    vector<long long> pow10(n + 1, 1), prefix(n + 1, 0);\n    for (int i = 1; i <= n; ++i)\n        pow10[i] = (pow10[i - 1] * 10) % MOD;\n    for (int i = 0; i < n; ++i)\n        prefix[i + 1] = (prefix[i] * 10 + (s[i] - '0')) % MOD;\n\n    long long total = 0;\n    for (int i = 0; i < n; ++i) {\n        for (int j = i + 1; j <= n; ++j) {\n            long long left = prefix[i];\n            long long right = (prefix[n] - prefix[j] * pow10[n - j]) % MOD;\n            if (right < 0) right += MOD;\n            long long val = (left * pow10[n - j] + right) % MOD;\n            total = (total + val) % MOD;\n        }\n    }\n    cout << total << endl;\n    return 0;\n}",
+    "language": "cpp",
+    "solutionNumber": 2
+  }

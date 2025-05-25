@@ -1,0 +1,28 @@
+{
+    "problemId": "1d-sokoban-001",
+    "problemName": "1D Sokoban",
+    "solutions": [
+      {
+        "code": "def solve():\n    t = int(input())\n    for _ in range(t):\n        n, m = map(int, input().split())\n        a = list(map(int, input().split()))\n        b = list(map(int, input().split()))\n\n        def process(a, b):\n            a_set = set(a)\n            b_set = set(b)\n            res = 0\n            a_set = set(a)\n            b_set = set(b)\n            prefix = [0] * (len(b) + 1)\n            for i in range(len(b)):\n                prefix[i + 1] = prefix[i] + (b[i] in a_set)\n            j = 0\n            for i in range(len(b)):\n                while j < len(a) and a[j] <= b[i]:\n                    j += 1\n                res = max(res, prefix[i + 1] - prefix[i])\n            return res\n\n        a_pos = [x for x in a if x > 0]\n        b_pos = [x for x in b if x > 0]\n        a_neg = [-x for x in reversed(a) if x < 0]\n        b_neg = [-x for x in reversed(b) if x < 0]\n\n        ans = process(a_pos, b_pos) + process(a_neg, b_neg)\n        print(ans)\n\nsolve()",
+        "language": "python",
+        "solutionNumber": 1
+      },
+      {
+        "code": "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nint process(vector<int>& a, vector<int>& b) {\n    int res = 0;\n    int j = 0;\n    for (int i = 0; i < b.size(); ++i) {\n        while (j < a.size() && a[j] <= b[i]) ++j;\n        res = max(res, j);\n    }\n    return res;\n}\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--) {\n        int n, m;\n        cin >> n >> m;\n        vector<int> a(n), b(m);\n        for (int i = 0; i < n; ++i) cin >> a[i];\n        for (int i = 0; i < m; ++i) cin >> b[i];\n\n        vector<int> a_pos, b_pos, a_neg, b_neg;\n        for (int x : a) {\n            if (x > 0) a_pos.push_back(x);\n            else a_neg.push_back(-x);\n        }\n        for (int x : b) {\n            if (x > 0) b_pos.push_back(x);\n            else b_neg.push_back(-x);\n        }\n        reverse(a_neg.begin(), a_neg.end());\n        reverse(b_neg.begin(), b_neg.end());\n\n        int ans = process(a_pos, b_pos) + process(a_neg, b_neg);\n        cout << ans << endl;\n    }\n    return 0;\n}",
+        "language": "cpp",
+        "solutionNumber": 2
+      },
+      {
+        "code": "function process(a, b) {\n    let res = 0;\n    let j = 0;\n    for (let i = 0; i < b.length; i++) {\n        while (j < a.length && a[j] <= b[i]) j++;\n        res = Math.max(res, j);\n    }\n    return res;\n}\n\nconst readline = require('readline');\nconst rl = readline.createInterface({ input: process.stdin });\n\nlet input = [];\nrl.on('line', line => input.push(line));\nrl.on('close', () => {\n    let t = parseInt(input[0]);\n    let idx = 1;\n    for (let test = 0; test < t; test++) {\n        let [n, m] = input[idx++].split(' ').map(Number);\n        let a = input[idx++].split(' ').map(Number);\n        let b = input[idx++].split(' ').map(Number);\n\n        let a_pos = a.filter(x => x > 0);\n        let b_pos = b.filter(x => x > 0);\n        let a_neg = a.filter(x => x < 0).map(x => -x).reverse();\n        let b_neg = b.filter(x => x < 0).map(x => -x).reverse();\n\n        let ans = process(a_pos, b_pos) + process(a_neg, b_neg);\n        console.log(ans);\n    }\n});",
+        "language": "javascript",
+        "solutionNumber": 3
+      },
+      {
+        "code": "import java.util.*;\n\npublic class Main {\n    static int process(List<Integer> a, List<Integer> b) {\n        int res = 0, j = 0;\n        for (int i = 0; i < b.size(); i++) {\n            while (j < a.size() && a.get(j) <= b.get(i)) j++;\n            res = Math.max(res, j);\n        }\n        return res;\n    }\n\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int t = sc.nextInt();\n        while (t-- > 0) {\n            int n = sc.nextInt(), m = sc.nextInt();\n            List<Integer> a = new ArrayList<>(), b = new ArrayList<>();\n            for (int i = 0; i < n; i++) a.add(sc.nextInt());\n            for (int i = 0; i < m; i++) b.add(sc.nextInt());\n\n            List<Integer> a_pos = new ArrayList<>(), b_pos = new ArrayList<>(), a_neg = new ArrayList<>(), b_neg = new ArrayList<>();\n            for (int x : a) {\n                if (x > 0) a_pos.add(x);\n                else a_neg.add(-x);\n            }\n            for (int x : b) {\n                if (x > 0) b_pos.add(x);\n                else b_neg.add(-x);\n            }\n            Collections.reverse(a_neg);\n            Collections.reverse(b_neg);\n\n            int ans = process(a_pos, b_pos) + process(a_neg, b_neg);\n            System.out.println(ans);\n        }\n        sc.close();\n    }\n}",
+        "language": "java",
+        "solutionNumber": 4
+      }
+    ],
+    "createdAt": "2025-05-24T00:00:00.000Z"
+  }
+  

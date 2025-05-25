@@ -1,0 +1,28 @@
+{
+    "problemId": "price-substring-removal-001",
+    "problemName": "Price Substring Removal",
+    "solutions": [
+      {
+        "code": "MOD = 10**9 + 7\ns = input().strip()\nn = len(s)\npow10 = [1] * (n + 1)\nfor i in range(1, n + 1):\n    pow10[i] = (pow10[i - 1] * 10) % MOD\n\nprefix = [0] * (n + 1)\nfor i in range(n):\n    prefix[i + 1] = (prefix[i] * 10 + int(s[i])) % MOD\n\ntotal = 0\nfor i in range(n):\n    for j in range(i + 1, n + 1):\n        left = prefix[i]\n        right = (prefix[n] - prefix[j] * pow10[n - j]) % MOD\n        if right < 0:\n            right += MOD\n        val = (left * pow10[n - j] + right) % MOD\n        total = (total + val) % MOD\n\nprint(total)",
+        "language": "python",
+        "solutionNumber": 1
+      },
+      {
+        "code": "#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nconst int MOD = 1e9 + 7;\n\nint main() {\n    string s;\n    cin >> s;\n    int n = s.size();\n    vector<long long> pow10(n + 1, 1), prefix(n + 1, 0);\n    for (int i = 1; i <= n; ++i)\n        pow10[i] = (pow10[i - 1] * 10) % MOD;\n    for (int i = 0; i < n; ++i)\n        prefix[i + 1] = (prefix[i] * 10 + (s[i] - '0')) % MOD;\n\n    long long total = 0;\n    for (int i = 0; i < n; ++i) {\n        for (int j = i + 1; j <= n; ++j) {\n            long long left = prefix[i];\n            long long right = (prefix[n] - prefix[j] * pow10[n - j]) % MOD;\n            if (right < 0) right += MOD;\n            long long val = (left * pow10[n - j] + right) % MOD;\n            total = (total + val) % MOD;\n        }\n    }\n    cout << total << endl;\n    return 0;\n}",
+        "language": "cpp",
+        "solutionNumber": 2
+      },
+      {
+        "code": "const MOD = 1e9 + 7;\nconst s = require('fs').readFileSync(0, 'utf-8').trim();\nconst n = s.length;\nconst pow10 = Array(n + 1).fill(1);\nfor (let i = 1; i <= n; ++i)\n    pow10[i] = (pow10[i - 1] * 10) % MOD;\n\nconst prefix = Array(n + 1).fill(0);\nfor (let i = 0; i < n; ++i)\n    prefix[i + 1] = (prefix[i] * 10 + Number(s[i])) % MOD;\n\nlet total = 0;\nfor (let i = 0; i < n; ++i) {\n    for (let j = i + 1; j <= n; ++j) {\n        const left = prefix[i];\n        let right = (prefix[n] - prefix[j] * pow10[n - j]) % MOD;\n        if (right < 0) right += MOD;\n        const val = (left * pow10[n - j] + right) % MOD;\n        total = (total + val) % MOD;\n    }\n}\nconsole.log(total);",
+        "language": "javascript",
+        "solutionNumber": 3
+      },
+      {
+        "code": "import java.util.*;\npublic class Main {\n    static final int MOD = 1000000007;\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String s = sc.next();\n        int n = s.length();\n        long[] pow10 = new long[n + 1];\n        pow10[0] = 1;\n        for (int i = 1; i <= n; i++)\n            pow10[i] = (pow10[i - 1] * 10) % MOD;\n        long[] prefix = new long[n + 1];\n        for (int i = 0; i < n; i++)\n            prefix[i + 1] = (prefix[i] * 10 + (s.charAt(i) - '0')) % MOD;\n        long total = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j <= n; j++) {\n                long left = prefix[i];\n                long right = (prefix[n] - prefix[j] * pow10[n - j]) % MOD;\n                if (right < 0) right += MOD;\n                long val = (left * pow10[n - j] + right) % MOD;\n                total = (total + val) % MOD;\n            }\n        }\n        System.out.println(total);\n    }\n}",
+        "language": "java",
+        "solutionNumber": 4
+      }
+    ],
+    "createdAt": "2025-05-24T00:00:00.000Z"
+  }
+  

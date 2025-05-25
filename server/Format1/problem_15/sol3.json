@@ -1,0 +1,5 @@
+{
+    "code": "const MOD = 1e9 + 7;\nconst s = require('fs').readFileSync(0, 'utf-8').trim();\nconst n = s.length;\nconst pow10 = Array(n + 1).fill(1);\nfor (let i = 1; i <= n; ++i)\n    pow10[i] = (pow10[i - 1] * 10) % MOD;\n\nconst prefix = Array(n + 1).fill(0);\nfor (let i = 0; i < n; ++i)\n    prefix[i + 1] = (prefix[i] * 10 + Number(s[i])) % MOD;\n\nlet total = 0;\nfor (let i = 0; i < n; ++i) {\n    for (let j = i + 1; j <= n; ++j) {\n        const left = prefix[i];\n        let right = (prefix[n] - prefix[j] * pow10[n - j]) % MOD;\n        if (right < 0) right += MOD;\n        const val = (left * pow10[n - j] + right) % MOD;\n        total = (total + val) % MOD;\n    }\n}\nconsole.log(total);",
+    "language": "javascript",
+    "solutionNumber": 3
+  }

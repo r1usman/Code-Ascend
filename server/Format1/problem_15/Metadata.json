@@ -1,0 +1,15 @@
+{
+    "difficulty": "MEDIUM_HARD",
+    "raw_tags": "['combinatorics', 'math', 'dp']",
+    "name": null,
+    "source": "codeforces",
+    "tags": "['Dynamic programming', 'Combinatorics', 'Mathematics']",
+    "skill_types": "['Dynamic programming']",
+    "url": "https://codeforces.com/problemset/problem/1422/C",
+    "Expected Auxiliary Space": null,
+    "Expected Time Complexity": null,
+    "time_limit": "1 second",
+    "date": "2020-10-04",
+    "picture_num": "0",
+    "memory_limit": "256 megabytes"
+}

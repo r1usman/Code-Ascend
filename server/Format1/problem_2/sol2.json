@@ -1,0 +1,5 @@
+{
+    "code": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    int n;\n    string s;\n    cin >> n >> s;\n    long long res = 0;\n    for (int i = 0; i < n; ++i) {\n        int max_len = 0, count = 0;\n        for (int j = i; j < n; ++j) {\n            if (s[j] == '1') count++;\n            else count = 0;\n            max_len = max(max_len, count);\n            res += max_len;\n        }\n    }\n    cout << res << endl;\n    return 0;\n}",
+    "language": "cpp",
+    "solutionNumber": 2
+}

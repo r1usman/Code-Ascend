@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LeetCode Problems</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100 min-h-screen text-gray-800">
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <header class="mb-6 text-center">
+      <h1 class="text-4xl font-bold text-blue-600">LeetCode Problems</h1>
+    </header>
+
+    <div class="mb-4 text-lg font-medium">
+      Found <%= problems.length %> problem<%= problems.length !== 1 ? 's' : '' %>
+    </div>
+
+    <% problems.forEach(problem => { 
+         const difficulty = (problem.difficulty || 'MEDIUM').toUpperCase();
+    %>
+      <div class="bg-white p-5 mb-4 rounded-lg shadow hover:shadow-md transition">
+        <div class="flex justify-between items-center mb-2">
+          <a href="/api/problems/<%= problem._id %>/view" class="text-xl font-semibold text-blue-700 hover:underline">
+            <%= problem.name %>
+          </a>
+          <span class="px-3 py-1 text-sm rounded-full font-medium
+            <% if (difficulty === 'EASY') { %> bg-green-100 text-green-800
+            <% } else if (difficulty === 'MEDIUM') { %> bg-yellow-100 text-yellow-800
+            <% } else if (difficulty === 'MEDIUM_HARD') { %> bg-amber-200 text-amber-900
+            <% } else if (difficulty === 'HARD') { %> bg-orange-200 text-orange-900
+            <% } else if (difficulty === 'VERY_HARD') { %> bg-red-200 text-red-900
+            <% } else { %> bg-gray-200 text-gray-800 <% } %>
+          ">
+            <%= difficulty.replace('_', ' ') %>
+          </span>
+        </div>
+
+        <% if (problem.tags && problem.tags.length > 0) { %>
+          <div class="flex flex-wrap gap-2 mb-2">
+            <% problem.tags.forEach(tag => { %>
+              <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded-full">
+                <%= tag %>
+              </span>
+            <% }) %>
+          </div>
+        <% } %>
+
+        <% if (problem.description) { %>
+          <div class="text-sm text-gray-600 mb-4"><%= problem.description %></div>
+        <% } %>
+
+        <div class="flex gap-3">
+          <a href="/problems/<%= problem._id %>/view" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+            View Problem
+          </a>
+          <a href="/problems/<%= problem._id %>" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition">
+            JSON Data
+          </a>
+        </div>
+      </div>
+    <% }) %>
+
+    <% if (problems.length === 0) { %>
+      <div class="text-center mt-20 text-gray-500">
+        <h2 class="text-2xl font-semibold">No problems found</h2>
+        <p class="mt-2">Import some problems first using the import script.</p>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

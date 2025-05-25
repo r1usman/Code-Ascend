@@ -1,0 +1,28 @@
+{
+    "problemId": "bench-placement-001",
+    "problemName": "Bench Placement in IT City Park",
+    "solutions": [
+      {
+        "code": "import math\nn = int(input())\nprint(math.perm(n, 5))",
+        "language": "python",
+        "solutionNumber": 1
+      },
+      {
+        "code": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int res = 1;\n    for(int i = 0; i < 5; ++i) res *= (n - i);\n    cout << res << endl;\n    return 0;\n}",
+        "language": "cpp",
+        "solutionNumber": 2
+      },
+      {
+        "code": "const prompt = require('prompt-sync')();\nlet n = parseInt(prompt());\nlet res = 1;\nfor (let i = 0; i < 5; i++) {\n    res *= (n - i);\n}\nconsole.log(res);",
+        "language": "javascript",
+        "solutionNumber": 3
+      },
+      {
+        "code": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int res = 1;\n        for (int i = 0; i < 5; i++) {\n            res *= (n - i);\n        }\n        System.out.println(res);\n    }\n}",
+        "language": "java",
+        "solutionNumber": 4
+      }
+    ],
+    "createdAt": "2025-05-24T00:00:00.000Z"
+  }
+  

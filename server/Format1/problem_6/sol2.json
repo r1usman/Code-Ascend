@@ -1,0 +1,5 @@
+{
+    "code": "#include <iostream>\n#include <vector>\n#include <cmath>\nusing namespace std;\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--) {\n        int n;\n        cin >> n;\n        vector<int> res(n, -1);\n        int i = n - 1;\n        while (i >= 0) {\n            int sq = sqrt(2 * i);\n            while (sq * sq > 2 * i) sq--;\n            int j = sq * sq - i;\n            if (j < 0 || j > i) {\n                cout << -1 << endl;\n                goto next;\n            }\n            for (int k = j; k <= i; ++k)\n                res[k] = j + i - k;\n            i = j - 1;\n        }\n        for (int x : res) cout << x << \" \";\n        cout << endl;\n    next:;\n    }\n    return 0;\n}",
+    "language": "cpp",
+    "solutionNumber": 2
+  }

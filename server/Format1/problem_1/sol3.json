@@ -1,0 +1,5 @@
+{
+    "code": "const prompt = require('prompt-sync')();\nlet n = parseInt(prompt());\nlet res = 1;\nfor (let i = 0; i < 5; i++) {\n    res *= (n - i);\n}\nconsole.log(res);",
+    "language": "javascript",
+    "solutionNumber": 3
+}

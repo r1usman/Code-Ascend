@@ -1,0 +1,5 @@
+{
+    "code": "import math\nn = int(input())\nprint(math.perm(n, 5))",
+    "language": "python",
+    "solutionNumber": 1
+}

@@ -1,0 +1,5 @@
+{
+    "code": "n = int(input())\ns = input()\n\nres = 0\nfor i in range(n):\n    max_len = 0\n    count = 0\n    for j in range(i, n):\n        if s[j] == '1':\n            count += 1\n            max_len = max(max_len, count)\n        else:\n            count = 0\n        res += max_len\nprint(res)",
+    "language": "python",
+    "solutionNumber": 1
+}

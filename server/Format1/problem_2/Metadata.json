@@ -1,0 +1,15 @@
+{
+    "difficulty": "VERY_HARD",
+    "raw_tags": "['data structures', 'binary search', 'dp', 'two pointers', 'divide and conquer']",
+    "name": null,
+    "source": "codeforces",
+    "tags": "['Sorting', 'Amortized analysis', 'Dynamic programming', 'Divide and conquer', 'Data structures']",
+    "skill_types": "['Dynamic programming', 'Data structures', 'Sorting', 'Amortized analysis']",
+    "url": "https://codeforces.com/problemset/problem/1428/F",
+    "Expected Auxiliary Space": null,
+    "Expected Time Complexity": null,
+    "time_limit": "2 seconds",
+    "date": "2020-10-17",
+    "picture_num": "0",
+    "memory_limit": "256 megabytes"
+}

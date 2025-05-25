@@ -1,0 +1,5 @@
+{
+    "code": "function process(a, b) {\n    let res = 0;\n    let j = 0;\n    for (let i = 0; i < b.length; i++) {\n        while (j < a.length && a[j] <= b[i]) j++;\n        res = Math.max(res, j);\n    }\n    return res;\n}\n\nconst readline = require('readline');\nconst rl = readline.createInterface({ input: process.stdin });\n\nlet input = [];\nrl.on('line', line => input.push(line));\nrl.on('close', () => {\n    let t = parseInt(input[0]);\n    let idx = 1;\n    for (let test = 0; test < t; test++) {\n        let [n, m] = input[idx++].split(' ').map(Number);\n        let a = input[idx++].split(' ').map(Number);\n        let b = input[idx++].split(' ').map(Number);\n\n        let a_pos = a.filter(x => x > 0);\n        let b_pos = b.filter(x => x > 0);\n        let a_neg = a.filter(x => x < 0).map(x => -x).reverse();\n        let b_neg = b.filter(x => x < 0).map(x => -x).reverse();\n\n        let ans = process(a_pos, b_pos) + process(a_neg, b_neg);\n        console.log(ans);\n    }\n});",
+    "language": "javascript",
+    "solutionNumber": 3
+  }

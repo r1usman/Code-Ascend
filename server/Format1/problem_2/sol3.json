@@ -1,0 +1,6 @@
+
+{
+    "code": "const readline = require('readline');\nconst rl = readline.createInterface({ input: process.stdin, output: process.stdout });\n\nlet input = [];\nrl.on('line', line => input.push(line)).on('close', () => {\n    const n = parseInt(input[0]);\n    const s = input[1];\n    let res = 0;\n    for (let i = 0; i < n; i++) {\n        let count = 0, maxLen = 0;\n        for (let j = i; j < n; j++) {\n            if (s[j] === '1') count++;\n            else count = 0;\n            maxLen = Math.max(maxLen, count);\n            res += maxLen;\n        }\n    }\n    console.log(res);\n});",
+    "language": "javascript",
+    "solutionNumber": 3
+}
