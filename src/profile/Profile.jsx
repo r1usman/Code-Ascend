@@ -89,38 +89,6 @@ export default function Profile() {
     }
   };
 
-  const handleDeleteUser = async () => {
-    try {
-      //   dispatch(deleteUserStart());
-      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-        method: 'DELETE',
-      });
-      const data = await res.json();
-      if (data.success === false) {
-        // dispatch(deleteUserFailure(data.message));
-        return;
-      }
-      //   dispatch(deleteUserSuccess(data));
-    } catch (err) {
-      //   dispatch(deleteUserFailure(err.message));
-    }
-  };
-
-  const handleSignOut = async () => {
-    try {
-      //   dispatch(signOutUserStart());
-      const res = await fetch('/api/auth/signout');
-      const data = await res.json();
-      if (data.success === false) {
-        // dispatch(deleteUserFailure(data.message));
-        return;
-      }
-      //   dispatch(deleteUserSuccess(data));
-    } catch (err) {
-      //   dispatch(deleteUserFailure(err.message));
-    }
-  };
-
   const avatarSrc =
     formData.profileImage ||
     currentUser?.profileImage ||
@@ -135,7 +103,7 @@ export default function Profile() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Avatar Upload Section */}
-          <div className="flex flex-col items-center space-y-3">
+          <div className="flex cursor-pointer flex-col items-center space-y-3">
             <input
               onChange={(e) => setFile(e.target.files[0])}
               type="file"
@@ -143,19 +111,14 @@ export default function Profile() {
               hidden
               accept="image/*"
             />
-            <div
+
+            <img
+              src={avatarSrc}
               onClick={() => fileRef.current.click()}
-              className="group relative cursor-pointer"
-            >
-              <img
-                src={avatarSrc}
-                alt="Profile Avatar"
-                className="h-32 w-32 rounded-full border-4 border-slate-700 object-cover transition-colors duration-300 group-hover:border-teal-500"
-              />
-              <div className="absolute inset-0 flex items-center justify-center rounded-full bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-50">
-                {!uploading && <CameraIcon />}
-              </div>
-            </div>
+              alt="Profile Avatar"
+              className="z-10 h-32 w-32 rounded-full border-4 border-slate-700 object-cover transition-colors duration-300 group-hover:border-teal-500"
+            />
+
             {uploading && (
               <div className="w-full max-w-xs text-center">
                 <div className="h-2 overflow-hidden rounded-full bg-slate-700">
@@ -250,20 +213,6 @@ export default function Profile() {
         </form>
 
         {/* Action Links */}
-        <div className="mt-6 flex justify-between text-sm">
-          <span
-            onClick={handleDeleteUser}
-            className="cursor-pointer text-red-500 transition-colors hover:text-red-400 hover:underline"
-          >
-            Delete Account
-          </span>
-          <span
-            onClick={handleSignOut}
-            className="cursor-pointer text-amber-500 transition-colors hover:text-amber-400 hover:underline"
-          >
-            Sign Out
-          </span>
-        </div>
 
         {/* Feedback Messages */}
         {error && (
